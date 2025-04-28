@@ -3,26 +3,26 @@
 input,
 textarea,
 select {
-  @include shadow.strong;
+	@include shadow.strong;
 
-  margin: 0.45rem 0 1rem;
-  padding: 0.25rem 0.45rem;
+	margin: 0.45rem 0 1rem;
+	padding: 0.25rem 0.45rem;
 
-  max-width: 100%;
+	max-width: 100%;
 
-  outline: none;
+	outline: none;
 
-  transition: box-shadow 0.15s ease-out;
+	transition: box-shadow 0.15s ease-out;
 
-  &:focus {
-    box-shadow: 3px 3px var(--color-secondary);
-  }
+	&:focus {
+		box-shadow: 3px 3px var(--color-secondary);
+	}
 }
 
 input[type='checkbox'] {
-  accent-color: var(--color-secondary-contrast);
+	accent-color: var(--color-secondary-contrast);
 }
 
 textarea {
-  resize: none;
+	resize: none;
 }

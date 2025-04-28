@@ -1,9 +1,9 @@
 <script lang="ts">
-	import { onDestroy, onMount, type Snippet } from 'svelte';
 	import { authSubscribe } from '@junobuild/core';
-	import { userStore } from '$lib/stores/user.store';
-	import { userSignedIn } from '$lib/derived/user.derived';
+	import { onDestroy, onMount, type Snippet } from 'svelte';
 	import Login from '$lib/components/auth/Login.svelte';
+	import { userSignedIn } from '$lib/derived/user.derived';
+	import { userStore } from '$lib/stores/user.store';
 
 	interface Props {
 		children: Snippet;
@@ -26,8 +26,6 @@
 {#if $userSignedIn}
 	<div>
 		{@render children()}
-
-
 	</div>
 {:else}
 	<Login />

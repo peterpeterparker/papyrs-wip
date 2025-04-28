@@ -2,139 +2,140 @@
 @use './section';
 
 @mixin article {
-  @include shadow.strong;
+	@include shadow.strong;
 
-  @include section.width;
+	@include section.width;
 
-  min-height: calc(100vh - var(--nav-height) - 1.45rem);
+	min-height: calc(100vh - var(--nav-height) - 1.45rem);
 
-  @media (min-width: 576px) {
-    aspect-ratio: 210 / 297;
-    min-height: auto;
+	@media (min-width: 576px) {
+		aspect-ratio: 210 / 297;
+		min-height: auto;
 
-    --deckgo-highlight-code-font-size: inherit;
+		--deckgo-highlight-code-font-size: inherit;
 
-    @supports (font: -apple-system-body) and (-webkit-appearance: none) {
-      min-height: fit-content;
-    }
-  }
+		@supports (font: -apple-system-body) and (-webkit-appearance: none) {
+			min-height: fit-content;
+		}
+	}
 
-  padding: 1.75rem;
-  margin: 0.75rem auto;
+	padding: 1.75rem;
+	margin: 0.75rem auto;
 
-  @media (min-width: 768px) {
-    padding: 4.75rem;
-    margin: 0.25rem auto;
-  }
+	@media (min-width: 768px) {
+		padding: 4.75rem;
+		margin: 0.25rem auto;
+	}
 
-  outline: none;
+	outline: none;
 
-  white-space: pre-wrap;
+	white-space: pre-wrap;
 
-  font-size: 1.25rem;
-  --deckgo-highlight-code-font-size: 0.85rem;
+	font-size: 1.25rem;
+	--deckgo-highlight-code-font-size: 0.85rem;
 }
 
 @mixin spacing {
-  > * {
-    margin: 0 auto 1.75rem;
-  }
+	> * {
+		margin: 0 auto 1.75rem;
+	}
 
-  // Reset section and header in case the user copy+paste such elements
-  // They might be applied as direct descendant or even sub-elements like article > section
-  section, header {
-    width: auto;
-    max-width: inherit;
-    margin: 0 auto 1.75rem;
-  }
+	// Reset section and header in case the user copy+paste such elements
+	// They might be applied as direct descendant or even sub-elements like article > section
+	section,
+	header {
+		width: auto;
+		max-width: inherit;
+		margin: 0 auto 1.75rem;
+	}
 
-  li {
-    margin: 0 auto 1.25rem;
-  }
+	li {
+		margin: 0 auto 1.25rem;
+	}
 
-  > h1,
-  > h2,
-  > h3 {
-    &:not(:first-child) {
-      margin-bottom: 0.45rem;
-    }
-  }
+	> h1,
+	> h2,
+	> h3 {
+		&:not(:first-child) {
+			margin-bottom: 0.45rem;
+		}
+	}
 
-  deckgo-highlight-code,
-  figure {
-    margin: 2rem auto;
-  }
+	deckgo-highlight-code,
+	figure {
+		margin: 2rem auto;
+	}
 }
 
 @mixin paragraphs {
-  deckgo-highlight-code {
-    --deckgo-highlight-code-token-atrule: var(--color-primary-opaque);
-    --deckgo-highlight-code-token-comment: var(--color-theme);
-    --deckgo-highlight-code-token-comment-rgb: var(--color-primary-opaque-rgb);
-    --deckgo-highlight-code-token-function: var(--color-secondary);
-    --deckgo-highlight-code-token-operator: var(--color-theme);
-    --deckgo-highlight-code-token-property: var(--color-primary);
-    --deckgo-highlight-code-token-punctuation: var(--color-theme);
-    --deckgo-highlight-code-token-selector: var(--color-primary);
-    --deckgo-highlight-code-token-regex: var(--color-primary);
-    --deckgo-highlight-code-line-height: var(--line-height-title);
-  }
+	deckgo-highlight-code {
+		--deckgo-highlight-code-token-atrule: var(--color-primary-opaque);
+		--deckgo-highlight-code-token-comment: var(--color-theme);
+		--deckgo-highlight-code-token-comment-rgb: var(--color-primary-opaque-rgb);
+		--deckgo-highlight-code-token-function: var(--color-secondary);
+		--deckgo-highlight-code-token-operator: var(--color-theme);
+		--deckgo-highlight-code-token-property: var(--color-primary);
+		--deckgo-highlight-code-token-punctuation: var(--color-theme);
+		--deckgo-highlight-code-token-selector: var(--color-primary);
+		--deckgo-highlight-code-token-regex: var(--color-primary);
+		--deckgo-highlight-code-line-height: var(--line-height-title);
+	}
 
-  hr {
-    height: 4em;
-    margin: 0 auto;
-    overflow: visible;
-    position: relative;
-    display: block;
-    border: none;
-    outline: none;
-  }
+	hr {
+		height: 4em;
+		margin: 0 auto;
+		overflow: visible;
+		position: relative;
+		display: block;
+		border: none;
+		outline: none;
+	}
 
-  hr:before {
-    content: '▪▪▪';
-    display: inline-block;
-    color: black;
-    position: absolute;
-    top: calc(50% - 1rem);
-    left: 50%;
-    transform: translate(-50%, -50%);
-    margin-left: 0.6em;
-    letter-spacing: 0.6em;
-  }
+	hr:before {
+		content: '▪▪▪';
+		display: inline-block;
+		color: black;
+		position: absolute;
+		top: calc(50% - 1rem);
+		left: 50%;
+		transform: translate(-50%, -50%);
+		margin-left: 0.6em;
+		letter-spacing: 0.6em;
+	}
 
-  h1:first-child {
-    @media (min-width: 768px) {
-      font-size: calc(2 * var(--font-size-h1));
-    }
-  }
+	h1:first-child {
+		@media (min-width: 768px) {
+			font-size: calc(2 * var(--font-size-h1));
+		}
+	}
 
-  > ul,
-  > ol,
-  > dl {
-    overflow-x: auto;
-  }
+	> ul,
+	> ol,
+	> dl {
+		overflow-x: auto;
+	}
 
-  * {
-    word-break: break-word;
-  }
+	* {
+		word-break: break-word;
+	}
 
-  blockquote {
-    border-left: 3px solid black;
-    padding-left: 20px;
-    padding-bottom: 4px;
-    padding-top: 4px;
-    margin: 0 0 1.75rem -23px;
-    font-weight: bold;
-    font-style: italic;
-  }
+	blockquote {
+		border-left: 3px solid black;
+		padding-left: 20px;
+		padding-bottom: 4px;
+		padding-top: 4px;
+		margin: 0 0 1.75rem -23px;
+		font-weight: bold;
+		font-style: italic;
+	}
 
-  pre {
-    white-space: pre-wrap;
-  }
+	pre {
+		white-space: pre-wrap;
+	}
 }
 
 @mixin placeholder {
-  :global(figcaption:empty:not(:focus):after) {
-    content: 'Type caption for image (optional)';
-  }
+	:global(figcaption:empty:not(:focus):after) {
+		content: 'Type caption for image (optional)';
+	}
 }

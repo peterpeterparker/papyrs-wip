@@ -1,7 +1,7 @@
 <script lang="ts">
 	import '$lib/styles/global.scss';
-	import type { Snippet } from 'svelte';
 	import { initSatellite } from '@junobuild/core';
+	import type { Snippet } from 'svelte';
 
 	interface Props {
 		children: Snippet;
