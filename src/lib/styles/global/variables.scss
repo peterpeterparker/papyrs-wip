@@ -5,10 +5,6 @@
 
 	--nav-height: 3.75rem;
 
-	@media (min-width: 768px) {
-		--nav-height: 5.45rem;
-	}
-
 	/** Colors */
 
 	--color-error: #ef476f;
@@ -53,6 +49,10 @@
 	--color-secondary-contrast-rgb: 0, 0, 0;
 	--color-secondary-shade: #b56e91;
 	--color-secondary-tint: #d38aae;
+
+	@media (min-width: 768px) {
+		--nav-height: 5.45rem;
+	}
 
 	&[theme='aero-blue'] {
 		--color-theme: #d5ffef;
