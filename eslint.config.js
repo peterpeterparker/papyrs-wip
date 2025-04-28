@@ -1,36 +1,32 @@
-import prettier from 'eslint-config-prettier';
-import js from '@eslint/js';
-import { includeIgnoreFile } from '@eslint/compat';
-import svelte from 'eslint-plugin-svelte';
-import globals from 'globals';
-import { fileURLToPath } from 'node:url';
-import ts from 'typescript-eslint';
-import svelteConfig from './svelte.config.js';
+import { default as svelteConfig } from '@dfinity/eslint-config-oisy-wallet/svelte';
+import { default as vitestConfig } from '@dfinity/eslint-config-oisy-wallet/vitest';
 
-const gitignorePath = fileURLToPath(new URL('./.gitignore', import.meta.url));
-
-export default ts.config(
-	includeIgnoreFile(gitignorePath),
-	js.configs.recommended,
-	...ts.configs.recommended,
-	...svelte.configs.recommended,
-	prettier,
-	...svelte.configs.prettier,
+export default [
+	...vitestConfig,
+	...svelteConfig,
 	{
-		languageOptions: {
-			globals: { ...globals.browser, ...globals.node }
-		},
-		rules: { 'no-undef': 'off' }
+		rules: {
+			// TODO: re-enable this rule when it includes `expect` statements nested in callable functions.
+			'vitest/expect-expect': ['off']
+		}
 	},
 	{
-		files: ['**/*.svelte', '**/*.svelte.ts', '**/*.svelte.js'],
-		languageOptions: {
-			parserOptions: {
-				projectService: true,
-				extraFileExtensions: ['.svelte'],
-				parser: ts.parser,
-				svelteConfig
-			}
-		}
+		ignores: [
+			'**/.DS_Store',
+			'**/node_modules',
+			'build',
+			'.svelte-kit',
+			'package',
+			'**/.env',
+			'**/.env.*',
+			'!**/.env.example',
+			'**/pnpm-lock.yaml',
+			'**/package-lock.json',
+			'**/yarn.lock',
+			'**/playwright-report',
+			'**/coverage',
+			'target/**/*',
+			'tmp/**/*'
+		]
 	}
-);
+];
