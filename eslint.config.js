@@ -6,6 +6,11 @@ export default [
 	...svelteConfig,
 	{
 		rules: {
+			'local-rules/use-option-type-wrapper': ['off']
+		}
+	},
+	{
+		rules: {
 			// TODO: re-enable this rule when it includes `expect` statements nested in callable functions.
 			'vitest/expect-expect': ['off']
 		}

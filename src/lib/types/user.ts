@@ -1,4 +1,4 @@
 import type { User } from '@junobuild/core';
 
 // TODO: use Zod
-export type UserOption = Option<User>;
+export type UserOption = User | undefined | null;
