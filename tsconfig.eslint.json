@@ -18,7 +18,9 @@
 		"./scripts/*.ts",
 		"./juno.config.ts",
 		"./eslint.config.js",
-		"./eslint-local-rules.cjs"
+		"./eslint-local-rules.cjs",
+		"./scripts/*.mjs",
+		"./scripts/*.ts"
 	],
 	"exclude": ["./node_modules/**"]
 }

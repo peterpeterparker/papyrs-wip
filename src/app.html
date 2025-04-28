@@ -4,6 +4,16 @@
 		<meta charset="utf-8" />
 		<link rel="icon" href="%sveltekit.assets%/favicon.png" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+		<!-- Init theme as fast as possible -->
+		<script>
+			try {
+				document.documentElement.setAttribute('theme', localStorage.theme ?? 'papaya-whip');
+			} catch (err) {
+				// We ignore the error until we can extra proxy/signin to auth.papy.rs
+			}
+		</script>
+
 		%sveltekit.head%
 	</head>
 	<body data-sveltekit-preload-data="hover">

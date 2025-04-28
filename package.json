@@ -16,7 +16,8 @@
 		"test": "npm run test:unit -- --run && npm run test:e2e",
 		"test:e2e": "playwright test",
 		"postinstall:copy-auth": "node -e \"require('fs').cpSync('node_modules/@junobuild/core/dist/workers/', './static/workers', {recursive: true});\"",
-		"postinstall": "npm run postinstall:copy-auth"
+		"postinstall": "npm run postinstall:copy-auth",
+		"i18n": "node scripts/i18n.mjs && prettier --write ./src/lib/types/i18n.d.ts"
 	},
 	"devDependencies": {
 		"@dfinity/eslint-config-oisy-wallet": "^0.1.8",

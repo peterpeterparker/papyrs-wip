@@ -23,3 +23,11 @@
 </script>
 
 {@render children()}
+
+<style lang="scss" global>
+	@use '../lib/styles/mixins/main';
+
+	:root {
+		@include main.layout;
+	}
+</style>

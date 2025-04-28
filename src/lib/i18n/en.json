@@ -1,0 +1,31 @@
+{
+	"core": {
+		"close": "Close",
+		"loading": "Loading...",
+		"in_progress": "In progress...",
+		"yes": "Yes",
+		"no": "No",
+		"reset": "Reset",
+		"ok": "Ok",
+		"save": "Save",
+		"delete": "Delete",
+		"sure": "Are you absolutely sure?",
+		"add": "Add",
+		"submit": "Submit",
+		"cancel": "Cancel",
+		"got_it": "Got it",
+		"back": "Back"
+	},
+	"nav": {
+		"menu": "Menu",
+		"sign_out": "Sign out",
+		"sign_in": "Sign in",
+		"ready_to_share": "Ready to share?",
+		"profile": "Profile",
+		"settings": "Settings",
+		"more": "More"
+	},
+	"profile": {
+		"switch_theme": "Switch theme colors to {0}"
+	}
+}
