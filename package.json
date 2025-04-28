@@ -14,11 +14,14 @@
 		"lint": "prettier --check . && eslint .",
 		"test:unit": "vitest",
 		"test": "npm run test:unit -- --run && npm run test:e2e",
-		"test:e2e": "playwright test"
+		"test:e2e": "playwright test",
+		"postinstall:copy-auth": "node -e \"require('fs').cpSync('node_modules/@junobuild/core/dist/workers/', './static/workers', {recursive: true});\"",
+		"postinstall": "npm run postinstall:copy-auth"
 	},
 	"devDependencies": {
 		"@dfinity/eslint-config-oisy-wallet": "^0.1.8",
 		"@junobuild/config": "^0.1.8",
+		"@junobuild/vite-plugin": "^3.4.0",
 		"@playwright/test": "^1.49.1",
 		"@sveltejs/kit": "^2.16.0",
 		"@sveltejs/vite-plugin-svelte": "^5.0.0",
@@ -36,6 +39,8 @@
 		"vitest": "^3.0.0"
 	},
 	"dependencies": {
-		"@sveltejs/adapter-static": "^3.0.8"
+		"@junobuild/core": "^0.1.11",
+		"@sveltejs/adapter-static": "^3.0.8",
+		"zod": "^3.24.3"
 	}
 }

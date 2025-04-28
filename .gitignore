@@ -31,3 +31,6 @@ Thumbs.db
 # Vite
 vite.config.js.timestamp-*
 vite.config.ts.timestamp-*
+
+# Authentication observer installed on npm i
+static/workers
