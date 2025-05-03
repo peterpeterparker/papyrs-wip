@@ -10,5 +10,7 @@
 </script>
 
 <main>
-	{@render children()}
+	<section>
+		{@render children()}
+	</section>
 </main>

@@ -5,7 +5,15 @@
 
 <Toolbar />
 
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
+<AuthGuard>
+	{#snippet welcome()}
+		<h1>Welcome Admin</h1>
 
-<AuthGuard>Hello</AuthGuard>
+		<p>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nam sagittis felis in magna
+			tincidunt, in semper dolor mattis.
+		</p>
+	{/snippet}
+
+	<div>Editor</div>
+</AuthGuard>
