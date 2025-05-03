@@ -1,6 +1,7 @@
 <script lang="ts">
 	import AuthGuard from '$lib/components/auth/AuthGuard.svelte';
 	import Toolbar from '$lib/components/toolbar/Toolbar.svelte';
+	import Editor from '$lib/components/editor/Editor.svelte';
 </script>
 
 <Toolbar />
@@ -15,5 +16,5 @@
 		</p>
 	{/snippet}
 
-	<div>Editor</div>
+	<Editor />
 </AuthGuard>
