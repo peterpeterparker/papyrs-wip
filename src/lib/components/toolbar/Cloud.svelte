@@ -47,7 +47,7 @@
 <Button onclick={() => (visible = true)} bind:button>
 	{#snippet icon()}
 		<div class="icon">
-			{Icon}
+			<Icon />
 		</div>
 	{/snippet}
 
