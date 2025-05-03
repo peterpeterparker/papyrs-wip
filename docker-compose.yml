@@ -13,7 +13,7 @@ services:
       - juno_skylab:/juno/.juno
       # Your Juno configuration file.
       # Notably used to provide your development Satellite ID to the emulator.
-      - ./juno.config.json:/juno/juno.config.json
+      - ./juno.config.ts:/juno/juno.config.ts
       # Shared folder for deploying and hot-reloading serverless functions
       # For example, when building functions in TypeScript, the output `.mjs` files are placed here.
       # The container then bundles them into your Satellite WASM (also placed here),
