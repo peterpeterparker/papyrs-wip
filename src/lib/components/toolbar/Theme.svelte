@@ -55,15 +55,14 @@
 		background: var(--theme-switcher-buttom-background, #ffeed6);
 		color: var(--theme-switcher-buttom-color, #000000);
 
+		@media (min-width: 768px) {
+			margin: 0.25rem 0;
+		}
 
-    @media (min-width: 768px) {
-      margin: 0.25rem 0;
-    }
-
-    &.selected {
-      box-shadow: 1px 1px black;
-      transform: translateX(2px) translateY(2px);
-    }
+		&.selected {
+			box-shadow: 1px 1px black;
+			transform: translateX(2px) translateY(2px);
+		}
 
 		&:hover:not(:disabled),
 		&:focus:not(:disabled) {

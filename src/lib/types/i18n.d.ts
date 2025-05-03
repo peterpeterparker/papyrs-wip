@@ -34,9 +34,30 @@ interface I18nProfile {
 	switch_theme: string;
 }
 
+interface I18nTools {
+	new: string;
+	open: string;
+	user: string;
+	profile_image: string;
+}
+
+interface I18nSync {
+	cloud: string;
+	cloud_error: string;
+	cloud_in_progress: string;
+	cloud_idle: string;
+	cloud_pending: string;
+	cloud_init: string;
+	info: string;
+	status: string;
+	wait: string;
+}
+
 interface I18n {
 	lang: Languages;
 	core: I18nCore;
 	nav: I18nNav;
 	profile: I18nProfile;
+	tools: I18nTools;
+	sync: I18nSync;
 }

@@ -1,5 +1,6 @@
 <script lang="ts">
 	import '$lib/styles/global.scss';
+	import '$lib/styles/layout.scss';
 	import { initSatellite } from '@junobuild/core';
 	import type { Snippet } from 'svelte';
 	import { fade } from 'svelte/transition';
@@ -31,13 +32,7 @@
 	{@render children()}
 {/await}
 
-<style lang="scss" global>
-	@use '../lib/styles/mixins/main';
-
-	:root {
-		@include main.layout;
-	}
-
+<style lang="scss">
 	.spinner {
 		height: 100dvh;
 	}
