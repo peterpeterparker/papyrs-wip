@@ -1,8 +1,5 @@
-<script lang="ts">
-	import Toolbar from '$lib/components/toolbar/Toolbar.svelte';
-</script>
+<section>
+	<h1>Welcome to my Blog</h1>
 
-<Toolbar />
-
-<h1>Welcome to SvelteKit</h1>
-<p>Visit <a href="https://svelte.dev/docs/kit">svelte.dev/docs/kit</a> to read the documentation</p>
+	<a href="/admin">To admin</a>
+</section>

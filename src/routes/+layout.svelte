@@ -34,6 +34,6 @@
 
 <style lang="scss">
 	.spinner {
-		height: 100dvh;
+		--spinner-position: fixed;
 	}
 </style>
