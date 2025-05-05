@@ -8,8 +8,8 @@
 	import Dirty from '$lib/components/toolbar/Dirty.svelte';
 	import Avatar from '$lib/components/ui/Avatar.svelte';
 	import Button from '$lib/components/ui/Button.svelte';
-	import { userSignedIn } from '$lib/derived/user.derived';
 	import Popover from '$lib/components/ui/Popover.svelte';
+	import { userSignedIn } from '$lib/derived/user.derived';
 	import { logout } from '$lib/services/auth.services';
 	import { i18n } from '$lib/stores/i18n.store';
 	import { sync } from '$lib/stores/sync.store';

@@ -1,7 +1,7 @@
 <script lang="ts">
 	import AuthGuard from '$lib/components/auth/AuthGuard.svelte';
-	import Toolbar from '$lib/components/toolbar/Toolbar.svelte';
 	import DocEditor from '$lib/components/editor/DocEditor.svelte';
+	import Toolbar from '$lib/components/toolbar/Toolbar.svelte';
 </script>
 
 <Toolbar />
