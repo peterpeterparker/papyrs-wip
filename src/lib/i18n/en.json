@@ -44,5 +44,8 @@
 		"info": "Every change that you make is automatically saved to your cloud.",
 		"status": "Cloud Status",
 		"wait": "Wait until your cloud is synced."
+	},
+	"editor": {
+		"bold": "Bold"
 	}
 }

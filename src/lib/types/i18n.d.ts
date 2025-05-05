@@ -53,6 +53,10 @@ interface I18nSync {
 	wait: string;
 }
 
+interface I18nEditor {
+	bold: string;
+}
+
 interface I18n {
 	lang: Languages;
 	core: I18nCore;
@@ -60,4 +64,5 @@ interface I18n {
 	profile: I18nProfile;
 	tools: I18nTools;
 	sync: I18nSync;
+	editor: I18nEditor;
 }

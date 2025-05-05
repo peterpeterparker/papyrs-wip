@@ -40,8 +40,22 @@
 		"vitest": "^3.0.0"
 	},
 	"dependencies": {
+		"@dfinity/utils": "^2.13.0",
 		"@junobuild/core": "^0.1.11",
 		"@sveltejs/adapter-static": "^3.0.8",
+		"@tiptap/core": "^2.11.9",
+		"@tiptap/extension-code-block-lowlight": "^2.11.9",
+		"@tiptap/extension-highlight": "^2.11.9",
+		"@tiptap/extension-link": "^2.11.9",
+		"@tiptap/extension-table": "^2.11.9",
+		"@tiptap/extension-table-cell": "^2.11.9",
+		"@tiptap/extension-table-header": "^2.11.9",
+		"@tiptap/extension-table-row": "^2.11.9",
+		"@tiptap/extension-typography": "^2.11.9",
+		"@tiptap/extension-underline": "^2.11.9",
+		"@tiptap/pm": "^2.11.9",
+		"@tiptap/starter-kit": "^2.11.9",
+		"tiptap-markdown": "^0.8.10",
 		"zod": "^3.24.3"
 	}
 }
