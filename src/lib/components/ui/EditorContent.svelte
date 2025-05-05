@@ -4,10 +4,14 @@
 	import { EDITOR_EXTENSIONS } from '$lib/constants/editor.constants';
 	import type { Markdown } from '$lib/types/core';
 
-	export let content: Markdown;
-	export let onUpdate: ((json: Markdown) => Promise<void>) | undefined = undefined;
-	export let editable = true;
-	export let editor: Editor | undefined = undefined;
+	interface Props {
+		content: Markdown;
+		onUpdate?: (json: Markdown) => Promise<void>;
+		editable?: boolean;
+		editor: Editor | undefined;
+	}
+
+	let { content, onUpdate, editable = true, editor = $bindable(undefined) }: Props = $props();
 
 	let element: HTMLElement;
 

@@ -4,10 +4,14 @@
 	import EditorHeader from '$lib/components/ui/EditorHeader.svelte';
 	import type { Markdown } from '$lib/types/core';
 
-	export let content: Markdown;
-	export let onUpdate: (json: Markdown) => Promise<void>;
+	interface Props {
+		content: Markdown;
+		onUpdate: (json: Markdown) => Promise<void>;
+	}
 
-	let editor: Editor | undefined;
+	let { content, onUpdate }: Props = $props();
+
+	let editor = $state<Editor | undefined>(undefined);
 </script>
 
 <div>

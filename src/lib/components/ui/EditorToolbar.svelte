@@ -5,10 +5,13 @@
 	import Button from '$lib/components/ui/Button.svelte';
 	import { i18n } from '$lib/stores/i18n.store';
 
-	export let editor: Editor | undefined;
+	interface Props {
+		editor: Editor | undefined;
+	}
 
-	let disabled = true;
-	$: disabled = isNullish(editor);
+	let { editor }: Props = $props();
+
+	let disabled = $derived(isNullish(editor));
 </script>
 
 <Button onclick={() => editor?.chain().focus().toggleBold().run()} {disabled}>
