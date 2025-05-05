@@ -1,6 +1,6 @@
 <script lang="ts">
-	import { onMount, onDestroy } from 'svelte';
 	import { Editor } from '@tiptap/core';
+	import { onMount, onDestroy } from 'svelte';
 	import { EDITOR_EXTENSIONS } from '$lib/constants/editor.constants';
 	import type { Markdown } from '$lib/types/core';
 
