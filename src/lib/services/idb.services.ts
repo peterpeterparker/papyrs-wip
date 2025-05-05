@@ -2,7 +2,7 @@ import { browser } from '$app/environment';
 import type { Markdown } from '$lib/types/core';
 import { createStore, setMany, type UseStore } from 'idb-keyval';
 
-const KEY_POST_CONTENT = 'proposal-content';
+const KEY_POST_CONTENT = 'post-content';
 
 const KEY_LAST_CONTENT_CHANGE = 'last-content-change';
 
