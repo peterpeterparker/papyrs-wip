@@ -1,6 +1,6 @@
 <script lang="ts">
 	import Editor from '$lib/components/ui/Editor.svelte';
-	import { routeKey } from '$lib/derived/nav.derived';
+	import { route } from '$lib/derived/route.derived.svelte.js';
 	import { initUserPost } from '$lib/services/edit.services';
 	import { setContent } from '$lib/services/idb.services';
 	import { userStore } from '$lib/stores/user.store';
@@ -11,14 +11,14 @@
 	const onUpdate = async (content: PostContent) => await setContent(content);
 
 	const init = async () => {
-		const { result: _ } = await initUserPost({ user: $userStore, routeKey: $routeKey });
+		const { result: _ } = await initUserPost({ user: $userStore, routeKey: route.key });
 
 		// TODO: to be continued
 	};
 
 	$effect(() => {
 		$userStore;
-		$routeKey;
+		route.key;
 
 		init();
 	});
