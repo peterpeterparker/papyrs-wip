@@ -1,12 +1,46 @@
 import { clear } from '$lib/services/idb.services';
 import { busy } from '$lib/stores/busy.store';
+import { i18n } from '$lib/stores/i18n.store';
 import { toasts } from '$lib/stores/toasts.store';
 import type { ToastLevel, ToastMsg } from '$lib/types/toast';
 import { replaceHistory } from '$lib/utils/route.utils';
 import { isNullish } from '@dfinity/utils';
-import { signIn as junoSignIn, signOut as junoSignOut } from '@junobuild/core';
+import {
+	signIn as junoSignIn,
+	signOut as junoSignOut,
+	SignInUserInterruptError
+} from '@junobuild/core';
+import { get } from 'svelte/store';
 
-export const signIn = async () => await junoSignIn();
+export const signIn = async (): Promise<{
+	success: 'ok' | 'cancelled' | 'error';
+	err?: unknown;
+}> => {
+	busy.start();
+
+	try {
+		await junoSignIn();
+
+		// We clean previous messages in case user was signed out automatically before sign-in again.
+		toasts.clean();
+
+		return { success: 'ok' };
+	} catch (err: unknown) {
+		if (err instanceof SignInUserInterruptError) {
+			// We do not display an error if user explicitly cancelled the process of sign-in
+			return { success: 'cancelled' };
+		}
+
+		toasts.error({
+			text: get(i18n).errors.sign_in,
+			detail: err
+		});
+
+		return { success: 'error', err };
+	} finally {
+		busy.stop();
+	}
+};
 
 export const signOut = async () => {
 	// To mask not operational UI (a side effect of sometimes slow JS loading after window.reload because of service worker and no cache).

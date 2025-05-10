@@ -50,5 +50,8 @@
 	},
 	"authentication": {
 		"session_expired": "You have been logged out because your session has expired."
+	},
+	"errors": {
+		"sign_in": "Something went wrong while sign-in."
 	}
 }

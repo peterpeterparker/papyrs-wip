@@ -35,7 +35,7 @@
 	const showLog = ($event: UIEvent) => {
 		$event.stopPropagation();
 
-		busy.show();
+		busy.start();
 
 		visible = false;
 	};

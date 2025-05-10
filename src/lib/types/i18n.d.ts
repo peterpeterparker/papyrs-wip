@@ -61,6 +61,10 @@ interface I18nAuthentication {
 	session_expired: string;
 }
 
+interface I18nErrors {
+	sign_in: string;
+}
+
 interface I18n {
 	lang: Languages;
 	core: I18nCore;
@@ -70,4 +74,5 @@ interface I18n {
 	sync: I18nSync;
 	editor: I18nEditor;
 	authentication: I18nAuthentication;
+	errors: I18nErrors;
 }
