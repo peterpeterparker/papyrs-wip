@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { signIn } from '@junobuild/core';
+	import { signIn } from '$lib/services/auth.services';
 
 	const login = async () => {
 		await signIn();
