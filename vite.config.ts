@@ -2,6 +2,7 @@ import juno from '@junobuild/vite-plugin';
 import { sveltekit } from '@sveltejs/kit/vite';
 import { svelteTesting } from '@testing-library/svelte/vite';
 import { defineConfig } from 'vite';
+import { CSS_CONFIG_OPTIONS, defineViteReplacements } from './vite.utils';
 
 export default defineConfig({
 	plugins: [sveltekit(), juno()],
@@ -19,6 +20,10 @@ export default defineConfig({
 				}
 			]
 		}
+	},
+	...CSS_CONFIG_OPTIONS,
+	define: {
+		...defineViteReplacements()
 	},
 	worker: {
 		plugins: () => [sveltekit()],

@@ -6,14 +6,16 @@ export interface Busy {
 	close: boolean;
 }
 
-export interface BusyStore extends Readable<Busy | undefined> {
+export type BusyStoreData = Busy | undefined | null;
+
+export interface BusyStore extends Readable<BusyStoreData> {
 	start: (log?: boolean) => void;
 	show: () => void;
 	stop: () => void;
 }
 
 const initBusyStore = (): BusyStore => {
-	const { subscribe, set } = writable<Busy | undefined>(undefined);
+	const { subscribe, set } = writable<BusyStoreData>(undefined);
 
 	return {
 		subscribe,
@@ -27,7 +29,7 @@ const initBusyStore = (): BusyStore => {
 		},
 
 		stop() {
-			set(undefined);
+			set(null);
 		}
 	};
 };

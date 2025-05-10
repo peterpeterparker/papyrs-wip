@@ -8,6 +8,8 @@ declare global {
 		// interface Platform {}
 	}
 
+	declare const VITE_APP_VERSION: string;
+
 	/* eslint-disable */
 
 	declare namespace svelteHTML {

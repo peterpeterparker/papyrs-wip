@@ -1,0 +1,1 @@
+export const APP_VERSION = VITE_APP_VERSION;

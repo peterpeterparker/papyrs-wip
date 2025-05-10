@@ -4,6 +4,8 @@
 	import { initSatellite } from '@junobuild/core';
 	import type { Snippet } from 'svelte';
 	import { fade } from 'svelte/transition';
+	import Busy from '$lib/components/notifications/Busy.svelte';
+	import Toasts from '$lib/components/notifications/Toasts.svelte';
 	import Spinner from '$lib/components/ui/Spinner.svelte';
 	import { i18n } from '$lib/stores/i18n.store';
 
@@ -30,6 +32,9 @@
 	</div>
 {:then _}
 	{@render children()}
+
+	<Busy />
+	<Toasts />
 {/await}
 
 <style lang="scss">
