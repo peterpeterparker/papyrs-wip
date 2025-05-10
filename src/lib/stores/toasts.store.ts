@@ -20,6 +20,22 @@ const initToastsStore = () => {
 			update((messages: ToastMsg[]) => [...messages, msg]);
 		},
 
+		warn(text: string) {
+			this.show({
+				text,
+				level: 'warn',
+				duration: 2000
+			});
+		},
+
+		success(toast: { text: string; color?: 'primary' | 'secondary' | 'tertiary' }) {
+			this.show({
+				...toast,
+				level: 'info',
+				duration: 2000
+			});
+		},
+
 		hide() {
 			update((messages: ToastMsg[]) => messages.slice(1));
 		}
