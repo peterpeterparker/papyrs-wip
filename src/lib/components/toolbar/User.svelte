@@ -10,7 +10,7 @@
 	import Button from '$lib/components/ui/Button.svelte';
 	import Popover from '$lib/components/ui/Popover.svelte';
 	import { userSignedIn } from '$lib/derived/user.derived';
-	import { logout } from '$lib/services/auth.services';
+	import { signOut as logout } from '$lib/services/auth.services';
 	import { i18n } from '$lib/stores/i18n.store';
 	import { sync } from '$lib/stores/sync.store';
 
@@ -18,7 +18,7 @@
 	let button = $state<HTMLButtonElement | undefined>(undefined);
 
 	const signOut = async () => {
-		await logout({ clearLocalEdit: true });
+		await logout();
 
 		visible = false;
 	};

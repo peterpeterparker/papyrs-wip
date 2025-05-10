@@ -47,5 +47,8 @@
 	},
 	"editor": {
 		"bold": "Bold"
+	},
+	"authentication": {
+		"session_expired": "You have been logged out because your session has expired."
 	}
 }

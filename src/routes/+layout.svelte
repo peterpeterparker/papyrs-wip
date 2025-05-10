@@ -7,6 +7,7 @@
 	import Busy from '$lib/components/notifications/Busy.svelte';
 	import Toasts from '$lib/components/notifications/Toasts.svelte';
 	import Spinner from '$lib/components/ui/Spinner.svelte';
+	import { displayAndCleanLogoutMsg } from '$lib/services/auth.services';
 	import { i18n } from '$lib/stores/i18n.store';
 
 	interface Props {
@@ -23,6 +24,8 @@
 				auth: true
 			}
 		});
+
+		displayAndCleanLogoutMsg();
 	};
 </script>
 

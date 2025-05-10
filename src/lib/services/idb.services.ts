@@ -1,7 +1,7 @@
 import { browser } from '$app/environment';
 import type { Markdown } from '$lib/types/core';
 import type { PostContent } from '$lib/types/juno';
-import { createStore, setMany, type UseStore } from 'idb-keyval';
+import { clear as clearIdb, createStore, setMany, type UseStore } from 'idb-keyval';
 
 const KEY_POST_KEY = 'post-key';
 const KEY_POST_CONTENT = 'post-content';
@@ -37,3 +37,5 @@ export const setContent = (content: Markdown): Promise<void> =>
 		],
 		papyrsStore
 	);
+
+export const clear = (): Promise<void> => clearIdb(papyrsStore);

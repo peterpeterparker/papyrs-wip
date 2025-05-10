@@ -57,6 +57,10 @@ interface I18nEditor {
 	bold: string;
 }
 
+interface I18nAuthentication {
+	session_expired: string;
+}
+
 interface I18n {
 	lang: Languages;
 	core: I18nCore;
@@ -65,4 +69,5 @@ interface I18n {
 	tools: I18nTools;
 	sync: I18nSync;
 	editor: I18nEditor;
+	authentication: I18nAuthentication;
 }

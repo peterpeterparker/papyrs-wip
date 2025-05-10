@@ -4,6 +4,8 @@
 	import { fade } from 'svelte/transition';
 	import Login from '$lib/components/auth/Login.svelte';
 	import { userSignedIn } from '$lib/derived/user.derived';
+	import { toastAndReload } from '$lib/services/auth.services';
+	import { i18n } from '$lib/stores/i18n.store';
 	import { userStore } from '$lib/stores/user.store';
 
 	interface Props {
@@ -17,8 +19,11 @@
 
 	onMount(() => (unsubscribe = authSubscribe((user) => userStore.set(user))));
 
-	// TODO: implement a toast to display when signed-out automatically
-	const automaticSignOut = () => console.log('Automatically signed out because session expired');
+	const automaticSignOut = () =>
+		toastAndReload({
+			text: $i18n.authentication.session_expired,
+			level: 'warn'
+		});
 
 	onDestroy(() => unsubscribe?.());
 </script>
