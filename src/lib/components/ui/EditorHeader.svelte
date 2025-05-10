@@ -6,6 +6,7 @@
 		editor: Editor | undefined;
 	}
 
+	// eslint-disable-next-line svelte/no-unused-props
 	let props: Props = $props();
 </script>
 
