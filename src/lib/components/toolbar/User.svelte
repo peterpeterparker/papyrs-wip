@@ -1,5 +1,4 @@
 <script lang="ts">
-	import { signIn as signInJuno } from '@junobuild/core';
 	import { goto } from '$app/navigation';
 	import IconMore from '$lib/components/icons/IconMore.svelte';
 	import IconSignIn from '$lib/components/icons/IconSignIn.svelte';
@@ -10,7 +9,7 @@
 	import Button from '$lib/components/ui/Button.svelte';
 	import Popover from '$lib/components/ui/Popover.svelte';
 	import { userSignedIn } from '$lib/derived/user.derived';
-	import { signOut as logout } from '$lib/services/auth.services';
+	import { signIn, signOut as logout } from '$lib/services/auth.services';
 	import { i18n } from '$lib/stores/i18n.store';
 	import { sync } from '$lib/stores/sync.store';
 
@@ -21,10 +20,6 @@
 		await logout();
 
 		visible = false;
-	};
-
-	const signIn = async () => {
-		await signInJuno();
 	};
 </script>
 

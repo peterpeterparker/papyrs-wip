@@ -4,7 +4,9 @@ import { toasts } from '$lib/stores/toasts.store';
 import type { ToastLevel, ToastMsg } from '$lib/types/toast';
 import { replaceHistory } from '$lib/utils/route.utils';
 import { isNullish } from '@dfinity/utils';
-import { signOut as junoSignOut } from '@junobuild/core';
+import { signIn as junoSignIn, signOut as junoSignOut } from '@junobuild/core';
+
+export const signIn = async () => await junoSignIn();
 
 export const signOut = async () => {
 	// To mask not operational UI (a side effect of sometimes slow JS loading after window.reload because of service worker and no cache).
