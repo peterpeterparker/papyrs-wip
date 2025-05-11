@@ -32,8 +32,8 @@ export const signIn = async (): Promise<{
 		}
 
 		toasts.error({
-			text: get(i18n).errors.sign_in,
-			detail: err
+			msg: { text: get(i18n).authentication.errors.sign_in },
+			err
 		});
 
 		return { success: 'error', err };

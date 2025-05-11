@@ -21,7 +21,7 @@
 
 	const automaticSignOut = () =>
 		toastAndReload({
-			text: $i18n.authentication.session_expired,
+			text: $i18n.authentication.text.session_expired,
 			level: 'warn'
 		});
 

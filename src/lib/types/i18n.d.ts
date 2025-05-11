@@ -54,15 +54,13 @@ interface I18nSync {
 }
 
 interface I18nEditor {
-	bold: string;
+	text: { bold: string };
+	errors: { init: string };
 }
 
 interface I18nAuthentication {
-	session_expired: string;
-}
-
-interface I18nErrors {
-	sign_in: string;
+	text: { session_expired: string };
+	errors: { sign_in: string };
 }
 
 interface I18n {
@@ -74,5 +72,4 @@ interface I18n {
 	sync: I18nSync;
 	editor: I18nEditor;
 	authentication: I18nAuthentication;
-	errors: I18nErrors;
 }

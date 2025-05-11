@@ -3,6 +3,10 @@ import type { PostContent } from '$lib/types/juno';
 import type { UserOption } from '$lib/types/user';
 import { replaceHistory } from '$lib/utils/route.utils';
 import { isNullish } from '@dfinity/utils';
+import template from '$lib/templates/new-post.md?raw';
+import { toasts } from '$lib/stores/toasts.store';
+import { get } from 'svelte/store';
+import { i18n } from '$lib/stores/i18n.store';
 
 export const initUserPost = async ({
 	user,
@@ -22,9 +26,7 @@ export const initUserPost = async ({
 	try {
 		if (isNullish(routeKey)) {
 			const key = window.crypto.randomUUID();
-
-			// TODO: template
-			const content = 'Hello World';
+			const content = template;
 
 			await Promise.all([
 				init({
@@ -41,7 +43,10 @@ export const initUserPost = async ({
 			};
 		}
 	} catch (err: unknown) {
-		// TODO: toast error
+		toasts.error({
+			msg: { text: get(i18n).editor.errors.init },
+			err
+		});
 
 		return { result: 'error', content: undefined };
 	}

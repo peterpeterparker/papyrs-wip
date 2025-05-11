@@ -4,7 +4,7 @@ import { nonNullish } from '@dfinity/utils';
 import { type Readable, writable } from 'svelte/store';
 
 export interface ToastsStore extends Readable<ToastMsg[]> {
-	error: (params: { text: string; detail?: unknown }) => void;
+	error: (params: { msg: Omit<ToastMsg, 'level'>; err?: unknown }) => void;
 	show: (msg: ToastMsg) => void;
 	warn: (text: string) => void;
 	success: (params: { text: string; color?: 'primary' | 'secondary' | 'tertiary' }) => void;
@@ -19,12 +19,16 @@ const initToastsStore = (): ToastsStore => {
 	return {
 		subscribe,
 
-		error({ text, detail }) {
-			console.error(text, detail);
-			update((messages: ToastMsg[]) => [
-				...messages,
-				{ text, level: 'error', detail: errorDetailToString(detail) }
-			]);
+		error({ msg: { text, ...rest }, err }) {
+			if (nonNullish(err)) {
+				console.error(err);
+			}
+
+			this.show({
+				text: `${text}${nonNullish(err) ? ` / ${errorDetailToString(err)}` : ''}`,
+				...rest,
+				level: 'error'
+			});
 		},
 
 		show(msg) {

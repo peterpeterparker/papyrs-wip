@@ -46,12 +46,19 @@
 		"wait": "Wait until your cloud is synced."
 	},
 	"editor": {
-		"bold": "Bold"
+		"text": {
+			"bold": "Bold"
+		},
+		"errors": {
+			"init": "Something went wrong while initializing a new post."
+		}
 	},
 	"authentication": {
-		"session_expired": "You have been logged out because your session has expired."
-	},
-	"errors": {
-		"sign_in": "Something went wrong while sign-in."
+		"text": {
+			"session_expired": "You have been logged out because your session has expired."
+		},
+		"errors": {
+			"sign_in": "Something went wrong while sign-in."
+		}
 	}
 }

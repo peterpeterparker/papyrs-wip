@@ -19,5 +19,5 @@
 		<IconBold />
 	{/snippet}
 
-	{$i18n.editor.bold}
+	{$i18n.editor.text.bold}
 </Button>
