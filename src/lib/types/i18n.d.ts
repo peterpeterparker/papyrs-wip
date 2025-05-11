@@ -55,7 +55,7 @@ interface I18nSync {
 
 interface I18nEditor {
 	text: { bold: string };
-	errors: { init: string };
+	errors: { init: string; load: string; metadata_not_found: string; content_not_found: string };
 }
 
 interface I18nAuthentication {

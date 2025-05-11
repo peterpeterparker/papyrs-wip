@@ -50,7 +50,10 @@
 			"bold": "Bold"
 		},
 		"errors": {
-			"init": "Something went wrong while initializing a new post."
+			"init": "Something went wrong while initializing a new post.",
+			"load": "Something went wrong while loading your post.",
+			"metadata_not_found": "The metadata for the proposal key cannot be found.",
+			"content_not_found": "The content of the proposal cannot be found."
 		}
 	},
 	"authentication": {
