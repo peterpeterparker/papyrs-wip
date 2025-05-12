@@ -8,31 +8,28 @@
 
 	min-height: calc(100vh - var(--nav-height) - 1.45rem);
 
-	@media (min-width: 576px) {
-		aspect-ratio: 210 / 297;
-		min-height: auto;
-
-		--deckgo-highlight-code-font-size: inherit;
-
-		@supports (font: -apple-system-body) and (-webkit-appearance: none) {
-			min-height: fit-content;
-		}
-	}
-
 	padding: 1.75rem;
 	margin: 0.75rem auto;
-
-	@media (min-width: 768px) {
-		padding: 4.75rem;
-		margin: 0.25rem auto;
-	}
 
 	outline: none;
 
 	white-space: pre-wrap;
 
 	font-size: 1.25rem;
-	--deckgo-highlight-code-font-size: 0.85rem;
+
+	@media (min-width: 768px) {
+		padding: 4.75rem;
+		margin: 0.25rem auto;
+	}
+
+	@media (min-width: 576px) {
+		aspect-ratio: 210 / 297;
+		min-height: auto;
+
+		@supports (font: -apple-system-body) and (-webkit-appearance: none) {
+			min-height: fit-content;
+		}
+	}
 }
 
 @mixin spacing {
@@ -68,19 +65,6 @@
 }
 
 @mixin paragraphs {
-	deckgo-highlight-code {
-		--deckgo-highlight-code-token-atrule: var(--color-primary-opaque);
-		--deckgo-highlight-code-token-comment: var(--color-theme);
-		--deckgo-highlight-code-token-comment-rgb: var(--color-primary-opaque-rgb);
-		--deckgo-highlight-code-token-function: var(--color-secondary);
-		--deckgo-highlight-code-token-operator: var(--color-theme);
-		--deckgo-highlight-code-token-property: var(--color-primary);
-		--deckgo-highlight-code-token-punctuation: var(--color-theme);
-		--deckgo-highlight-code-token-selector: var(--color-primary);
-		--deckgo-highlight-code-token-regex: var(--color-primary);
-		--deckgo-highlight-code-line-height: var(--line-height-title);
-	}
-
 	hr {
 		height: 4em;
 		margin: 0 auto;
