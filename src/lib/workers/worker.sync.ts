@@ -117,7 +117,7 @@ export class WorkerSync {
 			console.error(err);
 
 			// In case of error we stop the sync
-			this.stopTimer();
+			await this.stopTimer();
 		}
 
 		this.#inProgress = false;
