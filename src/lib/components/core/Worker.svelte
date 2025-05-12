@@ -3,8 +3,8 @@
 	import { onDestroy, onMount, type Snippet } from 'svelte';
 	import { CONTAINER, SATELLITE_ID } from '$lib/constants/app.constants';
 	import { userNotSignedIn } from '$lib/derived/user.derived';
-	import { type ProposalWorker , initWorker } from '$lib/services/worker.services';
-		import { toasts } from '$lib/stores/toasts.store';
+	import { type ProposalWorker, initWorker } from '$lib/services/worker.services';
+	import { toasts } from '$lib/stores/toasts.store';
 	import { userStore } from '$lib/stores/user.store';
 
 	interface Props {
