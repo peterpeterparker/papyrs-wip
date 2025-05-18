@@ -31,14 +31,6 @@
 		return IconCloud;
 	};
 
-	const showLog = ($event: UIEvent) => {
-		$event.stopPropagation();
-
-		busy.start();
-
-		visible = false;
-	};
-
 	let label = $derived(syncLabel());
 	let Icon = $derived(syncIcon());
 </script>
@@ -58,8 +50,6 @@
 		<h2>{$i18n.sync.status}</h2>
 		<p>{$i18n.sync.info}</p>
 		<p>{@html label}</p>
-
-		<button type="button" onclick={showLog}> Log </button>
 	</div>
 </Popover>
 
