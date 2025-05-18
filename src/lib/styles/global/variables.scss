@@ -1,9 +1,22 @@
 :root {
-	--padding: 0.45rem;
 	--z-index: 1;
 	--spinner-size: 30px;
 
 	--nav-height: 3.75rem;
+
+	--padding-0_25x: calc(var(--padding) / 4);
+	--padding-0_5x: calc(var(--padding) / 2);
+	--padding: 0.45rem;
+	--padding-1_5x: calc(var(--padding) * 1.5);
+	--padding-2x: calc(var(--padding) * 2);
+	--padding-2_5x: calc(var(--padding) * 2.5);
+	--padding-3x: calc(var(--padding) * 3);
+	--padding-4x: calc(var(--padding) * 4);
+	--padding-6x: calc(var(--padding) * 6);
+	--padding-7x: calc(var(--padding) * 7);
+	--padding-8x: calc(var(--padding) * 8);
+	--padding-10x: calc(var(--padding) * 10);
+	--padding-12x: calc(var(--padding) * 12);
 
 	/** Colors */
 

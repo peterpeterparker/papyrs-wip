@@ -5,7 +5,7 @@
 		button?: HTMLButtonElement;
 		disabled?: boolean;
 		hidden?: boolean;
-		onclick: () => void;
+		onclick: (() => void) | (() => Promise<void>);
 		icon: Snippet;
 		children: Snippet;
 	}

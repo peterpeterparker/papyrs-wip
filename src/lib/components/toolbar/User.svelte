@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { goto } from '$app/navigation';
 	import IconMore from '$lib/components/icons/IconMore.svelte';
+	import IconSettings from '$lib/components/icons/IconSettings.svelte';
 	import IconSignIn from '$lib/components/icons/IconSignIn.svelte';
 	import IconSignOut from '$lib/components/icons/IconSignOut.svelte';
 	import IconUser from '$lib/components/icons/IconUser.svelte';
@@ -44,11 +45,22 @@
 				type="button"
 				role="menuitem"
 				aria-haspopup="menu"
-				onclick={async () => await goto('/profile')}
+				onclick={async () => await goto('/admin/profile')}
 				class="menu"
 			>
 				<IconUser />
 				<span>{$i18n.nav.profile}</span>
+			</button>
+
+			<button
+				type="button"
+				role="menuitem"
+				aria-haspopup="menu"
+				onclick={async () => await goto('/admin/settings')}
+				class="menu"
+			>
+				<IconSettings />
+				<span>{$i18n.nav.settings}</span>
 			</button>
 		{/if}
 

@@ -18,6 +18,8 @@ interface I18nCore {
 	cancel: string;
 	got_it: string;
 	back: string;
+	copy: string;
+	copied: string;
 }
 
 interface I18nNav {
@@ -63,6 +65,10 @@ interface I18nAuthentication {
 	errors: { sign_in: string };
 }
 
+interface I18nSettings {
+	admin_id: string;
+}
+
 interface I18n {
 	lang: Languages;
 	core: I18nCore;
@@ -72,4 +78,5 @@ interface I18n {
 	sync: I18nSync;
 	editor: I18nEditor;
 	authentication: I18nAuthentication;
+	settings: I18nSettings;
 }
