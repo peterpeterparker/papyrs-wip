@@ -18,11 +18,11 @@ const initBusyStore = (): BusyStore => {
 	return {
 		subscribe,
 
-		start(log = false) {
+		start: (log = false) => {
 			set({ log, spinner: true });
 		},
 
-		stop() {
+		stop: () => {
 			set(null);
 		}
 	};

@@ -8,10 +8,10 @@
 	import Avatar from '$lib/components/ui/Avatar.svelte';
 	import Button from '$lib/components/ui/Button.svelte';
 	import Popover from '$lib/components/ui/Popover.svelte';
+	import { syncBusy } from '$lib/derived/sync.derived';
 	import { userSignedIn } from '$lib/derived/user.derived';
 	import { signIn, signOut as logout } from '$lib/services/auth.services';
 	import { i18n } from '$lib/stores/i18n.store';
-	import { syncBusy } from '$lib/derived/sync.derived';
 
 	let visible = $state<boolean | undefined>(undefined);
 	let button = $state<HTMLButtonElement | undefined>(undefined);

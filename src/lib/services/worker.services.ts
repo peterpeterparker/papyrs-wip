@@ -1,9 +1,9 @@
+import { syncStore } from '$lib/stores/sync.store';
 import type {
 	PostMessage,
 	PostMessageDataRequest,
 	PostMessageDataResponse
 } from '$lib/types/post-message';
-import { syncStore } from '$lib/stores/sync.store';
 
 export interface ProposalWorker {
 	start: (data: PostMessageDataRequest) => void;

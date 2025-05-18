@@ -1,7 +1,7 @@
 import type { SyncStoreData } from '$lib/stores/sync.store';
+import type { SyncState } from '$lib/types/sync';
 import type { UserOption } from '$lib/types/user';
 import type { Environment } from '@junobuild/core';
-import type { SyncState } from '$lib/types/sync';
 
 export type PostMessageDataRequest = {
 	user: UserOption;

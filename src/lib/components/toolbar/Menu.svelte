@@ -4,8 +4,8 @@
 	import Dirty from '$lib/components/toolbar/Dirty.svelte';
 	import Button from '$lib/components/ui/Button.svelte';
 	import Popover from '$lib/components/ui/Popover.svelte';
-	import { i18n } from '$lib/stores/i18n.store';
 	import { syncBusy } from '$lib/derived/sync.derived';
+	import { i18n } from '$lib/stores/i18n.store';
 
 	let visible: boolean | undefined;
 	let button: HTMLButtonElement | undefined;

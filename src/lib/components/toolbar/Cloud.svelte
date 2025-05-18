@@ -4,9 +4,9 @@
 	import IconSync from '$lib/components/icons/IconSync.svelte';
 	import Button from '$lib/components/ui/Button.svelte';
 	import Popover from '$lib/components/ui/Popover.svelte';
+	import { syncBusy, syncError } from '$lib/derived/sync.derived';
 	import { busy } from '$lib/stores/busy.store';
 	import { i18n } from '$lib/stores/i18n.store';
-	import { syncBusy, syncError } from '$lib/derived/sync.derived';
 
 	let visible = $state(false);
 	let button = $state<HTMLButtonElement | undefined>(undefined);

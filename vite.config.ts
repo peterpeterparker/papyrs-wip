@@ -14,6 +14,7 @@ export default defineConfig({
 			plugins: [
 				{
 					name: 'fix-node-globals-polyfill',
+					// eslint-disable-next-line prefer-arrow/prefer-arrow-functions
 					setup(build) {
 						build.onResolve({ filter: /_virtual-process-polyfill_\.js/ }, ({ path }) => ({ path }));
 					}

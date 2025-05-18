@@ -14,23 +14,23 @@ export interface SyncStore extends Readable<SyncStoreData> {
 
 const initSyncStore = (): SyncStore => {
 	const { subscribe, update } = writable<SyncStoreData>({
-		metadata: "idle",
-		content: "idle"
+		metadata: 'idle',
+		content: 'idle'
 	});
 
 	return {
 		subscribe,
 
-		busy(id: keyof SyncStoreData) {
-			update((state) => ({ ...state, [id]: "busy" }));
+		busy: (id: keyof SyncStoreData) => {
+			update((state) => ({ ...state, [id]: 'busy' }));
 		},
 
-		idle(id: keyof SyncStoreData) {
-			update((state) => ({ ...state, [id]: "idle" }));
+		idle: (id: keyof SyncStoreData) => {
+			update((state) => ({ ...state, [id]: 'idle' }));
 		},
 
-		error(id: keyof SyncStoreData) {
-			update((state) => ({ ...state, [id]: "error" }));
+		error: (id: keyof SyncStoreData) => {
+			update((state) => ({ ...state, [id]: 'error' }));
 		}
 	};
 };

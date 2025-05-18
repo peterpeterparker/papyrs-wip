@@ -31,7 +31,7 @@ const initToastsStore = (): ToastsStore => {
 			});
 		},
 
-		show(msg) {
+		show: (msg) => {
 			update((messages: ToastMsg[]) => [...messages, msg]);
 		},
 
@@ -51,11 +51,11 @@ const initToastsStore = (): ToastsStore => {
 			});
 		},
 
-		hide() {
+		hide: () => {
 			update((messages: ToastMsg[]) => messages.slice(1));
 		},
 
-		reset(levels) {
+		reset: (levels) => {
 			if (nonNullish(levels) && levels.length > 0) {
 				update((messages: ToastMsg[]) => messages.filter(({ level }) => !levels.includes(level)));
 				return;
