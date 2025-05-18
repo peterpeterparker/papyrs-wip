@@ -11,7 +11,7 @@
 	import { userSignedIn } from '$lib/derived/user.derived';
 	import { signIn, signOut as logout } from '$lib/services/auth.services';
 	import { i18n } from '$lib/stores/i18n.store';
-	import { sync } from '$lib/stores/sync.store';
+	import { syncBusy } from '$lib/derived/sync.derived';
 
 	let visible = $state<boolean | undefined>(undefined);
 	let button = $state<HTMLButtonElement | undefined>(undefined);
@@ -36,7 +36,7 @@
 </Button>
 
 <Popover bind:visible anchor={button} direction="rtl">
-	{#if $sync.dirty}
+	{#if $syncBusy}
 		<Dirty />
 	{:else}
 		{#if $userSignedIn}

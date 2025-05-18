@@ -1,9 +1,9 @@
-import { wizardBusy } from '$lib/stores/wizard-busy.store';
 import type {
 	PostMessage,
 	PostMessageDataRequest,
 	PostMessageDataResponse
 } from '$lib/types/post-message';
+import { syncStore } from '$lib/stores/sync.store';
 
 export interface ProposalWorker {
 	start: (data: PostMessageDataRequest) => void;
@@ -19,10 +19,13 @@ export const initWorker = async (): Promise<ProposalWorker> => {
 
 		switch (msg) {
 			case 'busy':
-				wizardBusy.start((data.data as PostMessageDataResponse).workerId);
+				syncStore.busy((data.data as PostMessageDataResponse).workerId);
 				return;
 			case 'idle':
-				wizardBusy.stop((data.data as PostMessageDataResponse).workerId);
+				syncStore.idle((data.data as PostMessageDataResponse).workerId);
+				return;
+			case 'error':
+				syncStore.error((data.data as PostMessageDataResponse).workerId);
 				return;
 		}
 	};

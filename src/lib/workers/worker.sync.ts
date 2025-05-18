@@ -113,20 +113,27 @@ export class WorkerSync {
 
 			// Save timestamp to skip further changes if no changes
 			this.#lastChangeProcessed = lastChange;
+
+			postMessage({
+				msg: 'idle',
+				data: {
+					workerId: this.#workerId
+				}
+			});
 		} catch (err: unknown) {
 			console.error(err);
 
 			// In case of error we stop the sync
 			await this.stopTimer();
+
+			postMessage({
+				msg: 'error',
+				data: {
+					workerId: this.#workerId
+				}
+			});
 		}
 
 		this.#inProgress = false;
-
-		postMessage({
-			msg: 'idle',
-			data: {
-				workerId: this.#workerId
-			}
-		});
 	}
 }

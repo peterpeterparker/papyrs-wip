@@ -1,16 +1,17 @@
-import type { WizardBusyData } from '$lib/stores/wizard-busy.store';
+import type { SyncStoreData } from '$lib/stores/sync.store';
 import type { UserOption } from '$lib/types/user';
 import type { Environment } from '@junobuild/core';
+import type { SyncState } from '$lib/types/sync';
 
 export type PostMessageDataRequest = {
 	user: UserOption;
 	container: string | null | undefined;
 } & Pick<Environment, 'satelliteId'>;
 
-export type PostMessageDataResponse = { workerId: keyof WizardBusyData };
+export type PostMessageDataResponse = { workerId: keyof SyncStoreData };
 
 export type PostMessageRequest = 'start' | 'stop';
-export type PostMessageResponse = 'busy' | 'idle';
+export type PostMessageResponse = SyncState;
 
 export interface PostMessage<T extends PostMessageDataRequest | PostMessageDataResponse> {
 	msg: PostMessageRequest | PostMessageResponse;

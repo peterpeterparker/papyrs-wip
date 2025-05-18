@@ -6,26 +6,25 @@
 	import Popover from '$lib/components/ui/Popover.svelte';
 	import { busy } from '$lib/stores/busy.store';
 	import { i18n } from '$lib/stores/i18n.store';
-	import { sync } from '$lib/stores/sync.store';
+	import { syncBusy, syncError } from '$lib/derived/sync.derived';
 
 	let visible = $state(false);
 	let button = $state<HTMLButtonElement | undefined>(undefined);
 
 	const syncLabel = (): string => {
-		switch ($sync.sync) {
-			case 'error':
-				return $i18n.sync.cloud_error;
-			case 'in_progress':
-				return $i18n.sync.cloud_in_progress;
-			case 'init':
-				return $i18n.sync.cloud_pending;
-			default:
-				return $i18n.sync.cloud_idle;
+		if ($syncBusy) {
+			return $i18n.sync.cloud_in_progress;
 		}
+
+		if ($syncError) {
+			return $i18n.sync.cloud_error;
+		}
+
+		return $i18n.sync.cloud_idle;
 	};
 
 	const syncIcon = (): Component => {
-		if (['in_progress', 'pending', 'init'].includes($sync.sync)) {
+		if ($syncBusy) {
 			return IconSync;
 		}
 
@@ -40,13 +39,13 @@
 		visible = false;
 	};
 
-	let label = $state(syncLabel());
-	let Icon = $state(syncIcon());
+	let label = $derived(syncLabel());
+	let Icon = $derived(syncIcon());
 </script>
 
 <Button onclick={() => (visible = true)} bind:button>
 	{#snippet icon()}
-		<div class="icon">
+		<div class="icon" class:error={$syncError}>
 			<Icon />
 		</div>
 	{/snippet}

@@ -5,7 +5,7 @@
 	import Button from '$lib/components/ui/Button.svelte';
 	import Popover from '$lib/components/ui/Popover.svelte';
 	import { i18n } from '$lib/stores/i18n.store';
-	import { sync } from '$lib/stores/sync.store';
+	import { syncBusy } from '$lib/derived/sync.derived';
 
 	let visible: boolean | undefined;
 	let button: HTMLButtonElement | undefined;
@@ -28,7 +28,7 @@
 </Button>
 
 <Popover bind:visible anchor={button}>
-	{#if $sync.dirty}
+	{#if $syncBusy}
 		<Dirty />
 	{:else}
 		<button type="button" role="menuitem" aria-haspopup="menu" class="menu">
