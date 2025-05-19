@@ -1,5 +1,6 @@
 import { CodeBlockLowlight } from '@tiptap/extension-code-block-lowlight';
 import Highlight from '@tiptap/extension-highlight';
+import Image from '@tiptap/extension-image';
 import Link from '@tiptap/extension-link';
 import { Table } from '@tiptap/extension-table';
 import { TableCell } from '@tiptap/extension-table-cell';
@@ -34,5 +35,6 @@ export const EDITOR_EXTENSIONS = [
 	}),
 	TableRow,
 	TableHeader,
-	TableCell
+	TableCell,
+	Image
 ];

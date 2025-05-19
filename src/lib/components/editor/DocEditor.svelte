@@ -3,6 +3,7 @@
 	import { route } from '$lib/derived/route.derived.svelte.js';
 	import { initUserPost } from '$lib/services/edit.services';
 	import { setContent } from '$lib/services/idb.services';
+	import { onImgToUpload } from '$lib/services/image.services';
 	import { userStore } from '$lib/stores/user.store';
 	import type { PostContent } from '$lib/types/juno';
 
@@ -36,4 +37,4 @@
 	});
 </script>
 
-<Editor {content} {onUpdate} />
+<Editor {content} {onUpdate} {onImgToUpload} />
