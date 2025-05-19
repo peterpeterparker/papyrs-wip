@@ -14,6 +14,15 @@ export const syncMetadata = async ({ satellite }: WorkerSyncParams) => {
 
 	const [key, editableMetadata, docMetadata] = value;
 
+	if (
+		nonNullish(docMetadata) &&
+		docMetadata.data.title === editableMetadata?.title &&
+		docMetadata.data.description === editableMetadata?.description
+	) {
+		// No changes need to be persisted in the backend.
+		return;
+	}
+
 	const metadataData: PostMetadata = {
 		...(nonNullish(docMetadata) && docMetadata.data),
 		...(nonNullish(editableMetadata) && editableMetadata)

@@ -7,7 +7,8 @@ export const PostKeySchema = z.string();
 export type PostKey = z.infer<typeof PostKeySchema>;
 
 export const PostMetadataSchema = z.object({
-	title: z.string().optional()
+	title: z.string().optional(),
+	description: z.string().optional()
 });
 
 export type PostMetadata = z.infer<typeof PostMetadataSchema>;
