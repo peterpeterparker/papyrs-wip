@@ -1,6 +1,5 @@
 <script lang="ts">
 	import { nonNullish } from '@dfinity/utils';
-	import type { Editor } from '@tiptap/core';
 	import { fade } from 'svelte/transition';
 	import EditorContent from '$lib/components/ui/EditorContent.svelte';
 	import EditorHeader from '$lib/components/ui/EditorHeader.svelte';
@@ -14,14 +13,12 @@
 	}
 
 	let { content, onUpdate, onImgToUpload }: Props = $props();
-
-	let editor = $state<Editor | undefined>(undefined);
 </script>
 
 {#if nonNullish(content)}
 	<div in:fade>
-		<EditorHeader {editor} {onImgToUpload} />
+		<EditorHeader {onImgToUpload} />
 
-		<EditorContent bind:editor {content} {onUpdate} />
+		<EditorContent {content} {onUpdate} />
 	</div>
 {/if}

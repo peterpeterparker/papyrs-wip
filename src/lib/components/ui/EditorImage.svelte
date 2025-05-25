@@ -1,18 +1,19 @@
 <script lang="ts">
 	import { isNullish } from '@dfinity/utils';
-	import type { Editor } from '@tiptap/core';
 	import IconUpload from '$lib/components/icons/IconUpload.svelte';
 	import Button from '$lib/components/ui/Button.svelte';
+	import { getEditorContext } from '$lib/context/editor.context.js';
 	import { i18n } from '$lib/stores/i18n.store';
 	import type { OnImgToUploadResult } from '$lib/types/editor';
 
 	interface Props {
-		editor: Editor | undefined;
 		disabled: boolean;
 		onImgToUpload: (img: File) => Promise<OnImgToUploadResult>;
 	}
 
-	let { editor, disabled, onImgToUpload }: Props = $props();
+	let { disabled, onImgToUpload }: Props = $props();
+
+	let { store } = getEditorContext();
 
 	let input = $state<HTMLInputElement | undefined>(undefined);
 
@@ -32,7 +33,7 @@
 		}
 
 		const { url } = result;
-		editor?.chain().focus().setImage({ src: url }).run();
+		$store.editor?.chain().focus().setImage({ src: url }).run();
 	};
 </script>
 

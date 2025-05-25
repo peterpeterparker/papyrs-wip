@@ -2,19 +2,24 @@
 	import { Editor } from '@tiptap/core';
 	import { onMount, onDestroy } from 'svelte';
 	import { EDITOR_EXTENSIONS } from '$lib/constants/editor.constants';
+	import { getEditorContext } from '$lib/context/editor.context.js';
 	import type { Markdown } from '$lib/types/core';
 
 	interface Props {
 		content: Markdown;
 		onUpdate?: (json: Markdown) => Promise<void>;
 		editable?: boolean;
-		editor: Editor | undefined;
 	}
 
-	let { content, onUpdate, editable = true, editor = $bindable(undefined) }: Props = $props();
+	let { content, onUpdate, editable = true }: Props = $props();
+
+	let editor = $state<Editor | undefined>(undefined);
+
+	let { setEditor } = getEditorContext();
 
 	let element: HTMLElement;
 
+	// TODO: style?
 	onMount(
 		() =>
 			(editor = new Editor({
@@ -39,7 +44,12 @@
 			}))
 	);
 
-	onDestroy(() => editor?.destroy());
+	onDestroy(() => {
+		editor?.destroy();
+		editor = undefined;
+	});
+
+	$effect(() => setEditor(editor));
 </script>
 
 <article bind:this={element}></article>

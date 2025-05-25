@@ -1,10 +1,8 @@
 <script lang="ts">
-	import type { Editor } from '@tiptap/core';
 	import EditorToolbar from '$lib/components/ui/EditorToolbar.svelte';
 	import type { OnImgToUploadResult } from '$lib/types/editor';
 
 	interface Props {
-		editor: Editor | undefined;
 		onImgToUpload: (img: File) => Promise<OnImgToUploadResult>;
 	}
 

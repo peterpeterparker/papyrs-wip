@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { notEmptyString } from '@dfinity/utils';
 	import Editor from '$lib/components/ui/Editor.svelte';
+	import { initEditorContext } from '$lib/context/editor.context.js';
 	import { route } from '$lib/derived/route.derived.svelte.js';
 	import { initUserPost } from '$lib/services/edit.services';
 	import { setContent, setMetadata } from '$lib/services/idb.services';
@@ -54,6 +55,8 @@
 
 		init();
 	});
+
+	const { store } = initEditorContext();
 </script>
 
 <Editor {content} {onUpdate} {onImgToUpload} />
