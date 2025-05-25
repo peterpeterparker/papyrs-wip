@@ -2,10 +2,10 @@
 	import AuthGuard from '$lib/components/auth/AuthGuard.svelte';
 	import Worker from '$lib/components/core/Worker.svelte';
 	import DocEditor from '$lib/components/editor/DocEditor.svelte';
-	import Toolbar from '$lib/components/toolbar/Toolbar.svelte';
+	import AdminToolbar from '$lib/components/toolbar/AdminToolbar.svelte';
 </script>
 
-<Toolbar />
+<AdminToolbar />
 
 <AuthGuard>
 	{#snippet welcome()}

@@ -1,20 +1,22 @@
 <script lang="ts">
+	import AdminMenuEditor from '$lib/components/toolbar/AdminMenuEditor.svelte';
+	import AdminMenuUser from '$lib/components/toolbar/AdminMenuUser.svelte';
 	import Cloud from '$lib/components/toolbar/Cloud.svelte';
-	import Menu from '$lib/components/toolbar/Menu.svelte';
 	import Theme from '$lib/components/toolbar/Theme.svelte';
-	import User from '$lib/components/toolbar/User.svelte';
-	import { userSignedIn } from '$lib/derived/user.derived';
+	import { userSignedIn, userNotSignedIn } from '$lib/derived/user.derived';
 </script>
 
-<nav>
-	<Menu />
+<nav class:end={$userNotSignedIn}>
+	{#if $userSignedIn}
+		<AdminMenuEditor />
+	{/if}
 
 	<div class:cloud={$userSignedIn}>
 		{#if $userSignedIn}
 			<Cloud />
 		{/if}
 
-		<User />
+		<AdminMenuUser />
 
 		<Theme />
 	</div>
@@ -26,6 +28,10 @@
 		justify-content: space-between;
 
 		pointer-events: none;
+
+		&.end {
+			justify-content: flex-end;
+		}
 
 		:global(*) {
 			pointer-events: auto;
