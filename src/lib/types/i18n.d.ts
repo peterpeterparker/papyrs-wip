@@ -75,6 +75,18 @@ interface I18nSettings {
 	admin_id: string;
 }
 
+interface I18nPublish_edit {
+	text: {
+		title_max_chars: string;
+		description: string;
+		title: string;
+		publish: string;
+		canonical_url: string;
+		update_published: string;
+		update_now: string;
+	};
+}
+
 interface I18n {
 	lang: Languages;
 	core: I18nCore;
@@ -85,4 +97,5 @@ interface I18n {
 	editor: I18nEditor;
 	authentication: I18nAuthentication;
 	settings: I18nSettings;
+	publish_edit: I18nPublish_edit;
 }

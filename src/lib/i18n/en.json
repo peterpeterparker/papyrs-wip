@@ -70,5 +70,16 @@
 	},
 	"settings": {
 		"admin_id": "Administrator ID"
+	},
+	"publish_edit": {
+		"text": {
+			"title_max_chars": "The title should be provided with latin characters, arabic numerals and spaces. It must not be longer than {0} characters.",
+			"description": "Description (optional)",
+			"title": "Title",
+			"publish": "Publish",
+			"canonical_url": "Canonical URL (optional)",
+			"update_published": "Update the published post",
+			"update_now": "Update"
+		}
 	}
 }
