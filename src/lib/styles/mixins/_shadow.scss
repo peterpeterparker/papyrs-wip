@@ -1,7 +1,7 @@
 @mixin strong {
-	@include shadow;
 	background: white;
 	color: black;
+	@include shadow;
 }
 
 @mixin shadow {

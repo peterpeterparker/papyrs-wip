@@ -84,16 +84,17 @@
 		left: 50%;
 		transform: translate(-50%, -50%);
 
-		@include section.large;
+		overflow: hidden;
+
 		height: calc(min(100vh, 796px) - 2.75rem);
+
+		@include shadow.strong;
+
+		@include section.large;
 
 		@supports (-webkit-touch-callout: none) {
 			max-height: -webkit-fill-available;
 		}
-
-		@include shadow.strong;
-
-		overflow: hidden;
 	}
 
 	.toolbar {
