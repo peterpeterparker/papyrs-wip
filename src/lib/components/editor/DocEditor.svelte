@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { notEmptyString } from '@dfinity/utils';
+	import { isNullish, notEmptyString } from '@dfinity/utils';
 	import Editor from '$lib/components/ui/Editor.svelte';
 	import { initEditorContext } from '$lib/context/editor.context.js';
 	import { route } from '$lib/derived/route.derived.svelte.js';
@@ -9,14 +9,19 @@
 	import { userStore } from '$lib/stores/user.store';
 	import type { PostContent } from '$lib/types/juno';
 
+	const { store } = initEditorContext();
+
 	let content = $state<PostContent | undefined>(undefined);
 
-	const onUpdate = async (content: PostContent) => {
-		await setContent(content);
+	const updateMetadata = async () => {
+		const article = $store.editor?.options.element;
 
-		// TODO: do we really really want this?
-		const title = document.querySelector('article h1');
-		const firstParagraph = document.querySelector('article h1 + p');
+		if (isNullish(article)) {
+			return;
+		}
+
+		const title = article.querySelector('h1');
+		const firstParagraph = article.querySelector('h1 + p');
 
 		await setMetadata({
 			title:
@@ -29,6 +34,10 @@
 					? firstParagraph.textContent
 					: undefined
 		});
+	};
+
+	const onUpdate = async (content: PostContent) => {
+		await Promise.allSettled([setContent(content), updateMetadata()]);
 	};
 
 	const init = async () => {
@@ -55,8 +64,6 @@
 
 		init();
 	});
-
-	const { store } = initEditorContext();
 </script>
 
 <Editor {content} {onUpdate} {onImgToUpload} />
