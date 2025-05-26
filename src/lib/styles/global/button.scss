@@ -1,7 +1,11 @@
 @use '../mixins/button';
 
 button {
-	@include button.primary;
+	@include button.button;
+
+	&.primary {
+		@include button.primary;
+	}
 
 	&.menu {
 		@include button.menu;

@@ -80,6 +80,9 @@
 			"canonical_url": "Canonical URL (optional)",
 			"update_published": "Update the published post",
 			"update_now": "Update"
+		},
+		"errors": {
+			"get_editable": "Unable to load the post metadata and content. This is unexpected."
 		}
 	}
 }

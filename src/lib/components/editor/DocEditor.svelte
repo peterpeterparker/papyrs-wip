@@ -8,6 +8,7 @@
 	import { onImgToUpload } from '$lib/services/image.services';
 	import { userStore } from '$lib/stores/user.store';
 	import type { PostContent } from '$lib/types/juno';
+	import { DESCRIPTION_MAX_LENGTH } from '$lib/constants/publish.constants';
 
 	const { store } = initEditorContext();
 
@@ -31,10 +32,11 @@
 				title?.nodeType === Node.ELEMENT_NODE && notEmptyString(title?.textContent)
 					? title.textContent
 					: undefined,
+			// TODO: if description is length > 500 => 497 chars + ...
 			description:
 				firstParagraph?.nodeType === Node.ELEMENT_NODE &&
 				notEmptyString(firstParagraph?.textContent)
-					? firstParagraph.textContent
+					? firstParagraph.textContent.substring(0, DESCRIPTION_MAX_LENGTH)
 					: undefined
 		});
 	};
