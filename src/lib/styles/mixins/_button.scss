@@ -1,7 +1,7 @@
 @use './shadow';
 @use './text';
 
-@mixin primary {
+@mixin button {
 	outline: 0;
 	cursor: pointer;
 
@@ -43,6 +43,17 @@
 	&:hover:not(:disabled),
 	&:focus:not(:disabled) {
 		background: rgba(var(--color-primary-rgb), 0.4);
+		color: var(--color-primary-contrast);
+	}
+}
+
+@mixin primary {
+	background: var(--color-primary);
+	color: var(--color-primary-contrast);
+
+	&:hover:not(:disabled),
+	&:focus:not(:disabled) {
+		background: var(--color-secondary);
 		color: var(--color-primary-contrast);
 	}
 }
