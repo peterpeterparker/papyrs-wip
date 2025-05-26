@@ -20,8 +20,11 @@
 			return;
 		}
 
-		const title = article.querySelector('h1');
-		const firstParagraph = article.querySelector('h1 + p');
+		// The article contains a div that is the contenteditable container.
+		const contentEditable = article.firstElementChild;
+
+		const title = contentEditable?.querySelector('*:nth-child(1)');
+		const firstParagraph = contentEditable?.querySelector('*:nth-child(2)');
 
 		await setMetadata({
 			title:
