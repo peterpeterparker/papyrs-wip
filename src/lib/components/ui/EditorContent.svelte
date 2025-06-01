@@ -3,15 +3,17 @@
 	import { onMount, onDestroy } from 'svelte';
 	import { EDITOR_EXTENSIONS } from '$lib/constants/editor.constants';
 	import { getEditorContext } from '$lib/context/editor.context.js';
-	import type { Markdown } from '$lib/types/core';
+	import type { Html, Markdown } from '$lib/types/core';
 
 	interface Props {
 		content: Markdown;
 		onUpdate?: (json: Markdown) => Promise<void>;
+		onCreate?: (html: Html) => void;
 		editable?: boolean;
+		papyrusDisplay?: boolean;
 	}
 
-	let { content, onUpdate, editable = true }: Props = $props();
+	let { content, onUpdate, onCreate, editable = true, papyrusDisplay = true }: Props = $props();
 
 	let editor = $state<Editor | undefined>(undefined);
 
@@ -40,6 +42,9 @@
 				onUpdate: async ({ editor }) => {
 					const markdown = editor.storage.markdown.getMarkdown();
 					await onUpdate?.(markdown);
+				},
+				onCreate: ({ editor }) => {
+					onCreate?.(editor.getHTML());
 				}
 			}))
 	);
@@ -52,7 +57,7 @@
 	$effect(() => setEditor(editor));
 </script>
 
-<article bind:this={element}></article>
+<article bind:this={element} class:papyrus={papyrusDisplay}></article>
 
 <style lang="scss">
 	@use '../../styles/mixins/doc';
@@ -60,6 +65,12 @@
 	article {
 		@include doc.article;
 		@include doc.placeholder;
+
+		&:not(.papyrus) {
+			max-height: 200px;
+			overflow-y: auto;
+			padding: var(--padding-0_5x) var(--padding);
+		}
 
 		:global(div[contenteditable='true']) {
 			outline: none;

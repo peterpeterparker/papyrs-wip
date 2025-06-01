@@ -1,0 +1,22 @@
+hr {
+	height: var(--padding-6x);
+	font-size: var(--font-size-ultra-small);
+	margin: 0 auto var(--padding-2x);
+	overflow: visible;
+	position: relative;
+	display: block;
+	border: none;
+	outline: none;
+}
+
+hr:before {
+	content: '\25A0\25A0\25A0';
+	display: inline-block;
+	color: var(--color-card-contrast);
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	margin-left: 0.6em;
+	letter-spacing: 0.6em;
+}

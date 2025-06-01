@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { isNullish, notEmptyString } from '@dfinity/utils';
 	import Editor from '$lib/components/ui/Editor.svelte';
+	import { DESCRIPTION_MAX_LENGTH } from '$lib/constants/publish.constants';
 	import { initEditorContext } from '$lib/context/editor.context.js';
 	import { route } from '$lib/derived/route.derived.svelte.js';
 	import { initUserPost } from '$lib/services/edit.services';
@@ -31,10 +32,11 @@
 				title?.nodeType === Node.ELEMENT_NODE && notEmptyString(title?.textContent)
 					? title.textContent
 					: undefined,
+			// TODO: if description is length > 500 => 497 chars + ...
 			description:
 				firstParagraph?.nodeType === Node.ELEMENT_NODE &&
 				notEmptyString(firstParagraph?.textContent)
-					? firstParagraph.textContent
+					? firstParagraph.textContent.substring(0, DESCRIPTION_MAX_LENGTH)
 					: undefined
 		});
 	};
