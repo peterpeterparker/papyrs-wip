@@ -84,6 +84,7 @@ interface I18nPublish_edit {
 		canonical_url: string;
 		update_published: string;
 		update_now: string;
+		blog_post: string;
 	};
 	errors: { get_editable: string };
 }

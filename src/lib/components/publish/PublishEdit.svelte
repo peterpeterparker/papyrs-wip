@@ -87,11 +87,11 @@
 
 	<Value>
 		{#snippet label()}
-			Preview
+			{$i18n.publish_edit.text.blog_post}
 		{/snippet}
 
 		{#if notEmptyString(markdown)}
-			<div in:fade>
+			<div in:fade class="preview">
 				<EditorContent
 					content={markdown}
 					editable={false}
@@ -118,5 +118,11 @@
 	textarea {
 		width: 100%;
 		margin: 0 0 var(--padding-4x);
+	}
+
+	.preview {
+    background: var(--color-primary);
+    padding: var(--padding-2_5x);
+		margin: 0 0 var(--padding-2_5x);
 	}
 </style>
