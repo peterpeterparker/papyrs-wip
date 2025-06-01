@@ -1,14 +1,14 @@
 <script lang="ts">
-	import Value from '$lib/components/ui/Value.svelte';
-	import { i18n } from '$lib/stores/i18n.store';
-	import { onMount } from 'svelte';
-	import { getEditable } from '$lib/services/idb.services';
-	import { toasts } from '$lib/stores/toasts.store';
 	import { isNullish, nonNullish, notEmptyString } from '@dfinity/utils';
-	import { DESCRIPTION_MAX_LENGTH, TITLE_MAX_LENGTH } from '$lib/constants/publish.constants';
-	import HtmlMarkdown from '$lib/components/ui/HtmlMarkdown.svelte';
+	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
+	import HtmlMarkdown from '$lib/components/ui/HtmlMarkdown.svelte';
+	import Value from '$lib/components/ui/Value.svelte';
+	import { DESCRIPTION_MAX_LENGTH, TITLE_MAX_LENGTH } from '$lib/constants/publish.constants';
 	import { initEditorContext } from '$lib/context/editor.context';
+	import { getEditable } from '$lib/services/idb.services';
+	import { i18n } from '$lib/stores/i18n.store';
+	import { toasts } from '$lib/stores/toasts.store';
 
 	interface Props {
 		onclose: () => void;
@@ -92,7 +92,7 @@
 			<div in:fade>
 				<HtmlMarkdown markdown={content} />
 			</div>
-			{/if}
+		{/if}
 	</Value>
 
 	<div class="toolbar" role="toolbar">

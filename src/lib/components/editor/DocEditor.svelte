@@ -1,6 +1,7 @@
 <script lang="ts">
 	import { isNullish, notEmptyString } from '@dfinity/utils';
 	import Editor from '$lib/components/ui/Editor.svelte';
+	import { DESCRIPTION_MAX_LENGTH } from '$lib/constants/publish.constants';
 	import { initEditorContext } from '$lib/context/editor.context.js';
 	import { route } from '$lib/derived/route.derived.svelte.js';
 	import { initUserPost } from '$lib/services/edit.services';
@@ -8,7 +9,6 @@
 	import { onImgToUpload } from '$lib/services/image.services';
 	import { userStore } from '$lib/stores/user.store';
 	import type { PostContent } from '$lib/types/juno';
-	import { DESCRIPTION_MAX_LENGTH } from '$lib/constants/publish.constants';
 
 	const { store } = initEditorContext();
 
