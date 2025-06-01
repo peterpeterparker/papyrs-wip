@@ -1,8 +1,8 @@
 <script lang="ts">
-	import { isNullish, nonNullish, notEmptyString } from '@dfinity/utils';
+	import { isNullish, notEmptyString } from '@dfinity/utils';
 	import { onMount } from 'svelte';
 	import { fade } from 'svelte/transition';
-	import HtmlMarkdown from '$lib/components/ui/HtmlMarkdown.svelte';
+	import EditorContent from '$lib/components/ui/EditorContent.svelte';
 	import Value from '$lib/components/ui/Value.svelte';
 	import { DESCRIPTION_MAX_LENGTH, TITLE_MAX_LENGTH } from '$lib/constants/publish.constants';
 	import { initEditorContext } from '$lib/context/editor.context';
@@ -90,7 +90,7 @@
 
 		{#if notEmptyString(content)}
 			<div in:fade>
-				<HtmlMarkdown markdown={content} />
+				<EditorContent {content} editable={false} papyrusDisplay={false} />
 			</div>
 		{/if}
 	</Value>

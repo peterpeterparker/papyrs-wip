@@ -9,9 +9,10 @@
 		content: Markdown;
 		onUpdate?: (json: Markdown) => Promise<void>;
 		editable?: boolean;
+		papyrusDisplay?: boolean;
 	}
 
-	let { content, onUpdate, editable = true }: Props = $props();
+	let { content, onUpdate, editable = true, papyrusDisplay = true }: Props = $props();
 
 	let editor = $state<Editor | undefined>(undefined);
 
@@ -52,7 +53,7 @@
 	$effect(() => setEditor(editor));
 </script>
 
-<article bind:this={element}></article>
+<article bind:this={element} class:papyrus={papyrusDisplay}></article>
 
 <style lang="scss">
 	@use '../../styles/mixins/doc';
@@ -60,6 +61,12 @@
 	article {
 		@include doc.article;
 		@include doc.placeholder;
+
+		&:not(.papyrus) {
+			max-height: 200px;
+			overflow-y: auto;
+			padding: var(--padding-0_5x) var(--padding);
+		}
 
 		:global(div[contenteditable='true']) {
 			outline: none;
