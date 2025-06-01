@@ -85,6 +85,7 @@ interface I18nPublish_edit {
 		update_published: string;
 		update_now: string;
 		blog_post: string;
+		slug: string;
 	};
 	errors: { get_editable: string };
 }
