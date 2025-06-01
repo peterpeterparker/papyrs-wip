@@ -9,6 +9,7 @@
 	import { getEditable } from '$lib/services/idb.services';
 	import { i18n } from '$lib/stores/i18n.store';
 	import { toasts } from '$lib/stores/toasts.store';
+	import type { Html, Markdown } from '$lib/types/core';
 
 	interface Props {
 		onclose: () => void;
@@ -21,7 +22,8 @@
 
 	let title = $state('');
 	let description = $state('');
-	let content = $state<string | undefined>(undefined);
+	let markdown = $state<Markdown | undefined>(undefined);
+	let html = $state<Html | undefined>(undefined);
 
 	const handleErrorOnLoad = (err?: unknown) => {
 		onclose();
@@ -45,7 +47,7 @@
 
 			title = (metadata.title ?? '').substring(0, TITLE_MAX_LENGTH);
 			description = (metadata.description ?? '').substring(0, DESCRIPTION_MAX_LENGTH);
-			content = userContent;
+			markdown = userContent;
 		} catch (err: unknown) {
 			handleErrorOnLoad(err);
 		}
@@ -88,9 +90,14 @@
 			Preview
 		{/snippet}
 
-		{#if notEmptyString(content)}
+		{#if notEmptyString(markdown)}
 			<div in:fade>
-				<EditorContent {content} editable={false} papyrusDisplay={false} />
+				<EditorContent
+					content={markdown}
+					editable={false}
+					papyrusDisplay={false}
+					onCreate={(content) => (html = content)}
+				/>
 			</div>
 		{/if}
 	</Value>
