@@ -33,6 +33,7 @@
 
 	initEditorContext();
 
+	let key = $state('');
 	let title = $state('');
 	let description = $state('');
 	let slug = $state('');
@@ -57,7 +58,7 @@
 				return;
 			}
 
-			const [metadata, userContent] = editable;
+			const [metadata, userContent, postKey] = editable;
 
 			title = (metadata.title ?? '').substring(0, TITLE_MAX_LENGTH);
 			description = (metadata.description ?? '').substring(0, DESCRIPTION_MAX_LENGTH);
@@ -65,6 +66,7 @@
 				? metadata.slug
 				: (titleToSlug(title) ?? '').substring(0, URL_SLUG_MAX_LENGTH);
 			markdown = userContent;
+			key = postKey;
 		} catch (err: unknown) {
 			handleErrorOnLoad(err);
 		}
@@ -90,6 +92,7 @@
 		}
 
 		await onsubmit({
+			key,
 			title,
 			description,
 			slug,
