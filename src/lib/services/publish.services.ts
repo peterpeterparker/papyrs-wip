@@ -62,7 +62,7 @@ const uploadHtml = async ({ html, key }: Pick<PublishData, 'html' | 'key'>) => {
 
 	const filename = `${key}.html`;
 
-	const result = await uploadBlob({
+	await uploadBlob({
 		data: blob,
 		collection: 'content',
 		token: window.crypto.randomUUID(),
