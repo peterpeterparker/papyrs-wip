@@ -1,6 +1,7 @@
 <script lang="ts">
-	import { isNullish, notEmptyString } from '@dfinity/utils';
+	import { isEmptyString, isNullish, notEmptyString } from '@dfinity/utils';
 	import { onMount } from 'svelte';
+	import { get } from 'svelte/store';
 	import { fade } from 'svelte/transition';
 	import EditorContent from '$lib/components/ui/EditorContent.svelte';
 	import Value from '$lib/components/ui/Value.svelte';
@@ -14,6 +15,7 @@
 	import { i18n } from '$lib/stores/i18n.store';
 	import { toasts } from '$lib/stores/toasts.store';
 	import type { Html, Markdown } from '$lib/types/core';
+	import type { PublishData } from '$lib/types/publish';
 	import {
 		validateCanonical,
 		validateDescription,
@@ -24,13 +26,14 @@
 
 	interface Props {
 		onclose: () => void;
-		onsubmit: ($event: SubmitEvent) => Promise<void>;
+		onsubmit: ($event: PublishData) => Promise<void>;
 	}
 
 	let { onclose, onsubmit }: Props = $props();
 
 	initEditorContext();
 
+	let key = $state('');
 	let title = $state('');
 	let description = $state('');
 	let slug = $state('');
@@ -55,7 +58,7 @@
 				return;
 			}
 
-			const [metadata, userContent] = editable;
+			const [metadata, userContent, postKey] = editable;
 
 			title = (metadata.title ?? '').substring(0, TITLE_MAX_LENGTH);
 			description = (metadata.description ?? '').substring(0, DESCRIPTION_MAX_LENGTH);
@@ -63,6 +66,7 @@
 				? metadata.slug
 				: (titleToSlug(title) ?? '').substring(0, URL_SLUG_MAX_LENGTH);
 			markdown = userContent;
+			key = postKey;
 		} catch (err: unknown) {
 			handleErrorOnLoad(err);
 		}
@@ -76,9 +80,28 @@
 	// let validCanonicalInput = $derived(validateCanonical());
 
 	let validInput = $derived(validTitleInput && validDescriptionInput && validSlugInput);
+
+	const onSubmitPublish = async ($event: SubmitEvent) => {
+		$event.preventDefault();
+
+		if (isEmptyString(html)) {
+			toasts.error({
+				msg: { text: $i18n.publish_edit.errors.empty_post }
+			});
+			return;
+		}
+
+		await onsubmit({
+			key,
+			title,
+			description,
+			slug,
+			html
+		});
+	};
 </script>
 
-<form {onsubmit}>
+<form onsubmit={onSubmitPublish}>
 	<Value>
 		{#snippet label()}
 			{$i18n.publish_edit.text.title}

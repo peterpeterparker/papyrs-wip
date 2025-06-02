@@ -1,11 +1,10 @@
 <script lang="ts">
-	import { isNullish, notEmptyString } from '@dfinity/utils';
+	import { isNullish } from '@dfinity/utils';
 	import Editor from '$lib/components/ui/Editor.svelte';
-	import { DESCRIPTION_MAX_LENGTH } from '$lib/constants/publish.constants';
 	import { initEditorContext } from '$lib/context/editor.context.js';
 	import { route } from '$lib/derived/route.derived.svelte.js';
-	import { initUserPost } from '$lib/services/edit.services';
-	import { setContent, setMetadata } from '$lib/services/idb.services';
+	import { initUserPost, updateTitleAndDescription } from '$lib/services/edit.services';
+	import { setContent } from '$lib/services/idb.services';
 	import { onImgToUpload } from '$lib/services/image.services';
 	import { userStore } from '$lib/stores/user.store';
 	import type { PostContent } from '$lib/types/juno';
@@ -21,24 +20,7 @@
 			return;
 		}
 
-		// The article contains a div that is the contenteditable container.
-		const contentEditable = article.firstElementChild;
-
-		const title = contentEditable?.querySelector('*:nth-child(1)');
-		const firstParagraph = contentEditable?.querySelector('*:nth-child(2)');
-
-		await setMetadata({
-			title:
-				title?.nodeType === Node.ELEMENT_NODE && notEmptyString(title?.textContent)
-					? title.textContent
-					: undefined,
-			// TODO: if description is length > 500 => 497 chars + ...
-			description:
-				firstParagraph?.nodeType === Node.ELEMENT_NODE &&
-				notEmptyString(firstParagraph?.textContent)
-					? firstParagraph.textContent.substring(0, DESCRIPTION_MAX_LENGTH)
-					: undefined
-		});
+		await updateTitleAndDescription({ article });
 	};
 
 	const onUpdate = async (content: PostContent) => {

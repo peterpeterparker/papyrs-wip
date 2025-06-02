@@ -1,11 +1,12 @@
-import { init } from '$lib/services/idb.services';
+import { DESCRIPTION_MAX_LENGTH } from '$lib/constants/publish.constants';
+import { getMetadata, init, setMetadata } from '$lib/services/idb.services';
 import { i18n } from '$lib/stores/i18n.store';
 import { toasts } from '$lib/stores/toasts.store';
 import template from '$lib/templates/new-post.md?raw';
 import type { PostContent, PostKey, PostMetadata } from '$lib/types/juno';
 import type { UserOption } from '$lib/types/user';
 import { replaceHistory } from '$lib/utils/route.utils';
-import { isEmptyString, isNullish } from '@dfinity/utils';
+import { isEmptyString, isNullish, nonNullish, notEmptyString } from '@dfinity/utils';
 import { type Doc, getManyDocs } from '@junobuild/core';
 import { get } from 'svelte/store';
 
@@ -148,4 +149,28 @@ const getDocs = async (
 	});
 
 	return [metadata, content];
+};
+
+export const updateTitleAndDescription = async ({ article }: { article: Element }) => {
+	// The article contains a div that is the contenteditable container.
+	const contentEditable = article.firstElementChild;
+
+	const title = contentEditable?.querySelector('*:nth-child(1)');
+	const firstParagraph = contentEditable?.querySelector('*:nth-child(2)');
+
+	const idbData = await getMetadata();
+	const existingMetadata = nonNullish(idbData?.[1]) ? idbData[1] : { status: 'draft' as const };
+
+	await setMetadata({
+		...existingMetadata,
+		title:
+			title?.nodeType === Node.ELEMENT_NODE && notEmptyString(title?.textContent)
+				? title.textContent
+				: undefined,
+		// TODO: if description is length > 500 => 497 chars + ...
+		description:
+			firstParagraph?.nodeType === Node.ELEMENT_NODE && notEmptyString(firstParagraph?.textContent)
+				? firstParagraph.textContent.substring(0, DESCRIPTION_MAX_LENGTH)
+				: undefined
+	});
 };

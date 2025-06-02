@@ -87,7 +87,7 @@ interface I18nPublish_edit {
 		blog_post: string;
 		slug: string;
 	};
-	errors: { get_editable: string };
+	errors: { get_editable: string; empty_post: string; publish_failed: string };
 }
 
 interface I18n {

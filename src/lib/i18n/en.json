@@ -84,7 +84,9 @@
 			"slug": "Slug"
 		},
 		"errors": {
-			"get_editable": "Unable to load the post metadata and content. This is unexpected."
+			"get_editable": "Unable to load the post metadata and content. This is unexpected.",
+			"empty_post": "Unexpected error, the content of the blog post should not be empty.",
+			"publish_failed": "Publishing failed. This is unexpected."
 		}
 	}
 }
