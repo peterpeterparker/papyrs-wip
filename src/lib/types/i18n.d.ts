@@ -44,15 +44,18 @@ interface I18nTools {
 }
 
 interface I18nSync {
-	cloud: string;
-	cloud_error: string;
-	cloud_in_progress: string;
-	cloud_idle: string;
-	cloud_pending: string;
-	cloud_init: string;
-	info: string;
-	status: string;
-	wait: string;
+	text: {
+		cloud: string;
+		cloud_error: string;
+		cloud_in_progress: string;
+		cloud_idle: string;
+		cloud_pending: string;
+		cloud_init: string;
+		info: string;
+		status: string;
+		wait: string;
+	};
+	errors: { init: string };
 }
 
 interface I18nEditor {
@@ -72,7 +75,7 @@ interface I18nAuthentication {
 }
 
 interface I18nSettings {
-	admin_id: string;
+	text: { admin_id: string };
 }
 
 interface I18nPublish_edit {

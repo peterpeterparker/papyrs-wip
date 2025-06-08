@@ -37,15 +37,20 @@
 		"profile_image": "Profile image"
 	},
 	"sync": {
-		"cloud": "Cloud",
-		"cloud_error": "Cloud sync encountered an error.<br/><br/>If the problem persists, try to reload your <a href=\"/posts\">post</a> or reach out.",
-		"cloud_in_progress": "Saving...",
-		"cloud_idle": "All changes saved.",
-		"cloud_pending": "Saving...",
-		"cloud_init": "Initializing...",
-		"info": "Every change that you make is automatically saved to your cloud.",
-		"status": "Cloud Status",
-		"wait": "Wait until your cloud is synced."
+		"text": {
+			"cloud": "Cloud",
+			"cloud_error": "Cloud sync encountered an error.<br/><br/>If the problem persists, try to reload your <a href=\"/posts\">post</a> or reach out.",
+			"cloud_in_progress": "Saving...",
+			"cloud_idle": "All changes saved.",
+			"cloud_pending": "Saving...",
+			"cloud_init": "Initializing...",
+			"info": "Every change that you make is automatically saved to your cloud.",
+			"status": "Cloud Status",
+			"wait": "Wait until your cloud is synced."
+		},
+		"errors": {
+			"init": "Juno environment not initialized. Therefore worker cannot be synced."
+		}
 	},
 	"editor": {
 		"text": {
@@ -69,7 +74,9 @@
 		}
 	},
 	"settings": {
-		"admin_id": "Administrator ID"
+		"text": {
+			"admin_id": "Administrator ID"
+		}
 	},
 	"publish_edit": {
 		"text": {

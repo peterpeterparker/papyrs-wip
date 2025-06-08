@@ -4,6 +4,7 @@
 	import { CONTAINER, SATELLITE_ID } from '$lib/constants/app.constants';
 	import { userNotSignedIn } from '$lib/derived/user.derived';
 	import { type ProposalWorker, initWorker } from '$lib/services/worker.services';
+	import { i18n } from '$lib/stores/i18n.store';
 	import { toasts } from '$lib/stores/toasts.store';
 	import { userStore } from '$lib/stores/user.store';
 
@@ -20,11 +21,9 @@
 	$effect(() => {
 		worker?.stop();
 
-		// TODO: i18n
-
 		if (isNullish(SATELLITE_ID)) {
 			toasts.error({
-				msg: { text: 'Juno environment not initialized. Therefore worker cannot be synced.' }
+				msg: { text: $i18n.sync.errors.init }
 			});
 			return;
 		}

@@ -13,14 +13,14 @@
 
 	const syncLabel = (): string => {
 		if ($syncBusy) {
-			return $i18n.sync.cloud_in_progress;
+			return $i18n.sync.text.cloud_in_progress;
 		}
 
 		if ($syncError) {
-			return $i18n.sync.cloud_error;
+			return $i18n.sync.text.cloud_error;
 		}
 
-		return $i18n.sync.cloud_idle;
+		return $i18n.sync.text.cloud_idle;
 	};
 
 	const syncIcon = (): Component => {
@@ -42,13 +42,13 @@
 		</div>
 	{/snippet}
 
-	{$i18n.sync.cloud}
+	{$i18n.sync.text.cloud}
 </Button>
 
 <Popover bind:visible anchor={button} direction="rtl">
 	<div class="info">
-		<h2>{$i18n.sync.status}</h2>
-		<p>{$i18n.sync.info}</p>
+		<h2>{$i18n.sync.text.status}</h2>
+		<p>{$i18n.sync.text.info}</p>
 		<p>{@html label}</p>
 	</div>
 </Popover>

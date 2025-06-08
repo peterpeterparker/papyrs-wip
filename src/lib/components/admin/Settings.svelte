@@ -10,7 +10,7 @@
 <div>
 	<Value>
 		{#snippet label()}
-			{$i18n.settings.admin_id}
+			{$i18n.settings.text.admin_id}
 		{/snippet}
 		<Identifier identifier={$userStore?.key ?? ''} />
 	</Value>

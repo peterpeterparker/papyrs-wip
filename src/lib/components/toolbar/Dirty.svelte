@@ -3,7 +3,7 @@
 </script>
 
 <div class="info">
-	<p>{$i18n.sync.wait}</p>
+	<p>{$i18n.sync.text.wait}</p>
 </div>
 
 <style lang="scss">
