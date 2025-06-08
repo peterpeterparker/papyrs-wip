@@ -17,7 +17,7 @@
 
 	let editor = $state<Editor | undefined>(undefined);
 
-	let { setEditor } = getEditorContext();
+	const { setEditor } = getEditorContext();
 
 	let element: HTMLElement;
 

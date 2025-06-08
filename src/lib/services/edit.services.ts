@@ -10,11 +10,11 @@ import { isEmptyString, isNullish, nonNullish, notEmptyString } from '@dfinity/u
 import { type Doc, getManyDocs } from '@junobuild/core';
 import { get } from 'svelte/store';
 
-type InitPostResult = {
+interface InitPostResult {
 	result: 'ok' | 'not_allowed' | 'error';
 	content: PostContent | undefined;
 	metadata: PostMetadata | undefined;
-};
+}
 
 export const initUserPost = async ({
 	user,

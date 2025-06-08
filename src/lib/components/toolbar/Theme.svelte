@@ -4,7 +4,7 @@
 	import { Theme } from '$lib/types/theme';
 	import { i18nFormat } from '$lib/utils/i18n.utils';
 
-	let themes: Theme[] = Object.values(Theme);
+	const themes: Theme[] = Object.values(Theme);
 </script>
 
 <aside>

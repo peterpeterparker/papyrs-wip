@@ -8,7 +8,7 @@ export type PostMessageDataRequest = {
 	container: string | null | undefined;
 } & Pick<Environment, 'satelliteId'>;
 
-export type PostMessageDataResponse = { workerId: keyof SyncStoreData };
+export interface PostMessageDataResponse { workerId: keyof SyncStoreData }
 
 export type PostMessageRequest = 'start' | 'stop';
 export type PostMessageResponse = SyncState;

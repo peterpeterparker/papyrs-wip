@@ -13,7 +13,7 @@
 
 	let { onImgToUpload }: Props = $props();
 
-	let { store } = getEditorContext();
+	const { store } = getEditorContext();
 
 	let disabled = $derived(isNullish($store.editor));
 </script>

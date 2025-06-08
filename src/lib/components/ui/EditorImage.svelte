@@ -13,7 +13,7 @@
 
 	let { disabled, onImgToUpload }: Props = $props();
 
-	let { store } = getEditorContext();
+	const { store } = getEditorContext();
 
 	let input = $state<HTMLInputElement | undefined>(undefined);
 
