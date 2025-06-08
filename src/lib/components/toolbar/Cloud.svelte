@@ -3,10 +3,10 @@
 	import IconCloud from '$lib/components/icons/IconCloud.svelte';
 	import IconSync from '$lib/components/icons/IconSync.svelte';
 	import Button from '$lib/components/ui/Button.svelte';
+	import Html from '$lib/components/ui/Html.svelte';
 	import Popover from '$lib/components/ui/Popover.svelte';
 	import { syncBusy, syncError } from '$lib/derived/sync.derived';
 	import { i18n } from '$lib/stores/i18n.store';
-	import Html from '$lib/components/ui/Html.svelte';
 
 	let visible = $state(false);
 	let button = $state<HTMLButtonElement | undefined>(undefined);
