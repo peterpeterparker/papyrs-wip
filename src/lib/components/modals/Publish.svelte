@@ -14,7 +14,7 @@
 
 	let step = $state<'init' | 'in-progress' | 'success' | 'error'>('init');
 
-	const onsubmit = async (data: PublishData) => {
+	const onsubmit = async (data: Omit<PublishData, 'status'>) => {
 		step = 'in-progress';
 
 		const { result } = await publish(data);

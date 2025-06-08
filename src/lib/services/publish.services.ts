@@ -12,7 +12,9 @@ export const publish = async ({
 	html,
 	key,
 	...rest
-}: PublishData): Promise<{ result: 'success' } | { result: 'error'; err: unknown }> => {
+}: Omit<PublishData, 'status'>): Promise<
+	{ result: 'success' } | { result: 'error'; err: unknown }
+> => {
 	try {
 		await Promise.all([updateMetadata(rest), uploadHtml({ html, key })]);
 
@@ -27,7 +29,7 @@ export const publish = async ({
 	}
 };
 
-const updateMetadata = async (data: Omit<PublishData, 'html' | 'key'>) => {
+const updateMetadata = async (data: Omit<PublishData, 'html' | 'key' | 'status'>) => {
 	const value = await getMetadata();
 
 	assertNonNullish(value);
