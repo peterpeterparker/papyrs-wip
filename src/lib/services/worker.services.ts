@@ -14,7 +14,7 @@ export const initWorker = async (): Promise<ProposalWorker> => {
 	const ProposalsWorker = await import('$lib/workers/worker?worker');
 	const worker: Worker = new ProposalsWorker.default();
 
-	worker.onmessage = async ({ data }: MessageEvent<PostMessage<PostMessageDataResponse>>) => {
+	worker.onmessage = ({ data }: MessageEvent<PostMessage<PostMessageDataResponse>>) => {
 		const { msg } = data;
 
 		switch (msg) {
