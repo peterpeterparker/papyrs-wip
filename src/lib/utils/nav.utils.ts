@@ -1,7 +1,9 @@
 import { browser } from '$app/environment';
 import type { LoadEvent } from '@sveltejs/kit';
 
-export interface RouteKey { key: string | null | undefined }
+export interface RouteKey {
+	key: string | null | undefined;
+}
 
 export const loadRouteKey = ($event: LoadEvent): RouteKey => {
 	if (!browser) {

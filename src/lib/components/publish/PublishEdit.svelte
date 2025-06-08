@@ -24,7 +24,7 @@
 
 	interface Props {
 		onclose: () => void;
-		onsubmit: ($event: PublishData) => Promise<void>;
+		onsubmit: ($event: Omit<PublishData, 'status'>) => Promise<void>;
 	}
 
 	let { onclose, onsubmit }: Props = $props();

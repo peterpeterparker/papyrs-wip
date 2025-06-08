@@ -2,7 +2,10 @@ import { type Readable, writable } from 'svelte/store';
 
 export interface Busy {
 	spinner: boolean;
-	log: boolean;
+	// TODO: Not used. Should we keep it?
+	log?: boolean;
+	// TODO: Not used. Should we keep it?
+	close?: boolean;
 }
 
 export type BusyStoreData = Busy | undefined | null;
@@ -18,8 +21,8 @@ const initBusyStore = (): BusyStore => {
 	return {
 		subscribe,
 
-		start: (log = false) => {
-			set({ log, spinner: true });
+		start: () => {
+			set({ spinner: true });
 		},
 
 		stop: () => {
