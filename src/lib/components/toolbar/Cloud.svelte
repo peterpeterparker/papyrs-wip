@@ -5,8 +5,8 @@
 	import Button from '$lib/components/ui/Button.svelte';
 	import Popover from '$lib/components/ui/Popover.svelte';
 	import { syncBusy, syncError } from '$lib/derived/sync.derived';
-	import { busy } from '$lib/stores/busy.store';
 	import { i18n } from '$lib/stores/i18n.store';
+	import Html from '$lib/components/ui/Html.svelte';
 
 	let visible = $state(false);
 	let button = $state<HTMLButtonElement | undefined>(undefined);
@@ -49,7 +49,7 @@
 	<div class="info">
 		<h2>{$i18n.sync.text.status}</h2>
 		<p>{$i18n.sync.text.info}</p>
-		<p>{@html label}</p>
+		<p><Html text={label} /></p>
 	</div>
 </Popover>
 
