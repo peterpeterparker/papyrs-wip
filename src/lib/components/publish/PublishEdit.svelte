@@ -1,7 +1,6 @@
 <script lang="ts">
 	import { isEmptyString, isNullish, notEmptyString } from '@dfinity/utils';
 	import { onMount } from 'svelte';
-	import { get } from 'svelte/store';
 	import { fade } from 'svelte/transition';
 	import EditorContent from '$lib/components/ui/EditorContent.svelte';
 	import Value from '$lib/components/ui/Value.svelte';
@@ -17,7 +16,6 @@
 	import type { Html, Markdown } from '$lib/types/core';
 	import type { PublishData } from '$lib/types/publish';
 	import {
-		validateCanonical,
 		validateDescription,
 		validateSlug,
 		validateTitle
