@@ -1,12 +1,10 @@
-import type { Html } from '$lib/types/core';
-import type { PostKey } from '$lib/types/juno';
+import { HtmlSchema } from '$lib/types/core';
+import { PostKeySchema, PostMetadataSchema } from '$lib/types/juno';
+import type { z } from 'zod';
 
-// TODO: PostMetadataSchema => required fields
-// TODO: union with key
-export interface PublishData {
-	key: PostKey;
-	title: string;
-	description: string;
-	slug: string;
-	html: Html;
-}
+export const PublishDataSchema = PostMetadataSchema.required().extend({
+	key: PostKeySchema,
+	html: HtmlSchema
+});
+
+export type PublishData = z.infer<typeof PublishDataSchema>;
