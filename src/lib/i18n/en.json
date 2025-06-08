@@ -67,7 +67,8 @@
 	},
 	"authentication": {
 		"text": {
-			"session_expired": "You have been logged out because your session has expired."
+			"session_expired": "You have been logged out because your session has expired.",
+			"sign_in": "Continue with Internet Identity"
 		},
 		"errors": {
 			"sign_in": "Something went wrong while sign-in."

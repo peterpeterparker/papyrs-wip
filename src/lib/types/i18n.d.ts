@@ -70,7 +70,7 @@ interface I18nEditor {
 }
 
 interface I18nAuthentication {
-	text: { session_expired: string };
+	text: { session_expired: string; sign_in: string };
 	errors: { sign_in: string };
 }
 
