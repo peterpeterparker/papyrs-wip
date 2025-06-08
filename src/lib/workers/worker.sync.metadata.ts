@@ -25,7 +25,8 @@ export const syncMetadata = async ({ satellite }: WorkerSyncParams) => {
 
 	const metadataData: PostMetadata = {
 		...(nonNullish(docMetadata) && docMetadata.data),
-		...(nonNullish(editableMetadata) && editableMetadata)
+		...(nonNullish(editableMetadata) && editableMetadata),
+		status: 'draft'
 	};
 
 	const doc = await setDoc({

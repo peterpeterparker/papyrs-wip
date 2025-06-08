@@ -2,7 +2,9 @@
 	import { fade } from 'svelte/transition';
 	import PublishEdit from '$lib/components/publish/PublishEdit.svelte';
 	import Modal from '$lib/components/ui/Modal.svelte';
+	import { publish } from '$lib/services/publish.services';
 	import { i18n } from '$lib/stores/i18n.store';
+	import type { PublishData } from '$lib/types/publish';
 
 	interface Props {
 		onclose: () => void;
@@ -12,10 +14,12 @@
 
 	let step = $state<'init' | 'in-progress' | 'success' | 'error'>('init');
 
-	const onsubmit = async ($event: SubmitEvent) => {
-		$event.preventDefault();
+	const onsubmit = async (data: PublishData) => {
+		step = 'in-progress';
 
-		// TODO: publication
+		const { result } = await publish(data);
+
+		step = result === 'success' ? 'success' : 'error';
 	};
 </script>
 
