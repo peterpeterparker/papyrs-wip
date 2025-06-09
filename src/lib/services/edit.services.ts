@@ -3,7 +3,7 @@ import { getMetadata, init, setMetadata } from '$lib/services/idb.services';
 import { i18n } from '$lib/stores/i18n.store';
 import { toasts } from '$lib/stores/toasts.store';
 import template from '$lib/templates/new-post.md?raw';
-import type { PostContent, PostKey, PostMetadata } from '$lib/types/juno';
+import type { PostContent, PostKey, PostMetadata } from '$lib/types/post';
 import type { UserOption } from '$lib/types/user';
 import { replaceHistory } from '$lib/utils/route.utils';
 import { isEmptyString, isNullish, nonNullish, notEmptyString } from '@dfinity/utils';

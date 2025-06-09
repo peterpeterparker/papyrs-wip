@@ -1,5 +1,5 @@
 import { updateMetadataDoc } from '$lib/services/idb.services';
-import type { PostKey, PostMetadata } from '$lib/types/juno';
+import type { PostKey, PostMetadata } from '$lib/types/post';
 import { nonNullish } from '@dfinity/utils';
 import { type Doc, type SatelliteOptions, setDoc } from '@junobuild/core';
 

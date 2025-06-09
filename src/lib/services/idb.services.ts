@@ -1,5 +1,5 @@
 import { browser } from '$app/environment';
-import type { PostAsset, PostContent, PostKey, PostMetadata } from '$lib/types/juno';
+import type { PostAsset, PostContent, PostKey, PostMetadata } from '$lib/types/post';
 import type { Doc } from '@junobuild/core';
 import {
 	clear as clearIdb,

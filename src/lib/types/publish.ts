@@ -1,5 +1,5 @@
 import { HtmlSchema } from '$lib/types/core';
-import { PostKeySchema, PostMetadataSchema } from '$lib/types/juno';
+import { PostKeySchema, PostMetadataSchema } from '$lib/types/post';
 import type { z } from 'zod';
 
 export const PublishDataSchema = PostMetadataSchema.required().extend({

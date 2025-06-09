@@ -7,7 +7,7 @@
 	import { setContent } from '$lib/services/idb.services';
 	import { onImgToUpload } from '$lib/services/image.services';
 	import { userStore } from '$lib/stores/user.store';
-	import type { PostContent } from '$lib/types/juno';
+	import type { PostContent } from '$lib/types/post';
 
 	const { store } = initEditorContext();
 
