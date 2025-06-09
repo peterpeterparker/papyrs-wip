@@ -16,7 +16,8 @@ export const publish = async ({
 	{ result: 'success' } | { result: 'error'; err: unknown }
 > => {
 	try {
-		await Promise.all([updateMetadata(rest), uploadHtml({ html, key })]);
+		await uploadHtml({ html, key });
+		await updateMetadata(rest);
 
 		return { result: 'success' };
 	} catch (err: unknown) {
