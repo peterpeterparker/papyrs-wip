@@ -43,6 +43,7 @@
 	"dependencies": {
 		"@dfinity/utils": "^2.13.0",
 		"@junobuild/core": "^0.1.14",
+		"@junobuild/functions": "^0.1.0",
 		"@sveltejs/adapter-static": "^3.0.8",
 		"@tiptap/core": "^2.14.0",
 		"@tiptap/extension-code-block-lowlight": "^2.14.0",
