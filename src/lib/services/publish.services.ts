@@ -7,6 +7,8 @@ import { sanitize } from '$lib/utils/html.utils';
 import { assertNonNullish } from '@dfinity/utils';
 import { uploadBlob } from '@junobuild/core';
 import { get } from 'svelte/store';
+import { STORAGE_COLLECTION_CONTENT } from '$lib/constants/publish.constants';
+import { keyToFullPath } from '$lib/utils/publish.utils';
 
 export const publish = async ({
 	html,
@@ -51,13 +53,11 @@ const uploadHtml = async ({ html, key }: Pick<PublishData, 'html' | 'key'>) => {
 		type: 'text/html'
 	});
 
-	const filename = `${key}.html`;
-
 	await uploadBlob({
 		data: blob,
-		collection: 'content',
+		collection: STORAGE_COLLECTION_CONTENT,
 		token: window.crypto.randomUUID(),
-		fullPath: `/content/${filename}`,
-		filename
+		fullPath: keyToFullPath({key}),
+		filename: `${key}.html`
 	});
 };

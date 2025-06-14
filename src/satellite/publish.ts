@@ -8,6 +8,8 @@ import type { Blob, OnSetDocContext } from '@junobuild/functions';
 import { id } from '@junobuild/functions/ic-cdk';
 import { decodeDocData, getAssetStore, getContentChunksStore } from '@junobuild/functions/sdk';
 import type { PostMetadata } from '../lib/types/post';
+import { STORAGE_COLLECTION_CONTENT } from '../lib/constants/publish.constants';
+import { keyToFullPath } from '../lib/utils/publish.utils';
 
 export const createOrUpdatePost = async (context: OnSetDocContext) => {
 	const { status } = decodeDocData<PostMetadata>(context.data.data.after.data);
@@ -27,11 +29,10 @@ export const createOrUpdatePost = async (context: OnSetDocContext) => {
 };
 
 const getAsset = async ({ data: { key } }: OnSetDocContext) => {
-	// TODO: create utils for building full path
 	const asset = getAssetStore({
 		caller: id(),
-		collection: 'content',
-		full_path: `/content/${key}.html`
+		collection: STORAGE_COLLECTION_CONTENT,
+		full_path: keyToFullPath({key})
 	});
 
 	assertNonNullish(asset);
