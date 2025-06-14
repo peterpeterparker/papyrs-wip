@@ -1,14 +1,14 @@
+import { STORAGE_COLLECTION_CONTENT } from '$lib/constants/publish.constants';
 import { getMetadata } from '$lib/services/idb.services';
 import { setMetadata } from '$lib/services/metadata.services';
 import { i18n } from '$lib/stores/i18n.store';
 import { toasts } from '$lib/stores/toasts.store';
 import type { PublishData } from '$lib/types/publish';
 import { sanitize } from '$lib/utils/html.utils';
+import { keyToFullPath } from '$lib/utils/publish.utils';
 import { assertNonNullish } from '@dfinity/utils';
 import { uploadBlob } from '@junobuild/core';
 import { get } from 'svelte/store';
-import { STORAGE_COLLECTION_CONTENT } from '$lib/constants/publish.constants';
-import { keyToFullPath } from '$lib/utils/publish.utils';
 
 export const publish = async ({
 	html,
@@ -57,7 +57,7 @@ const uploadHtml = async ({ html, key }: Pick<PublishData, 'html' | 'key'>) => {
 		data: blob,
 		collection: STORAGE_COLLECTION_CONTENT,
 		token: window.crypto.randomUUID(),
-		fullPath: keyToFullPath({key}),
+		fullPath: keyToFullPath({ key }),
 		filename: `${key}.html`
 	});
 };

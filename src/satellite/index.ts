@@ -3,13 +3,13 @@ import {
 	defineHook,
 	type AssertFunction,
 	type AssertSetDoc,
+	type AssertSetDocContext,
 	type OnSetDoc,
 	type OnSetDocContext,
-	type AssertSetDocContext,
 	type RunFunction
 } from '@junobuild/functions';
-import { createOrUpdatePost } from './publish';
 import { assertPost } from './assert';
+import { createOrUpdatePost } from './publish';
 
 const collections = ['metadata'] as const;
 

@@ -7,8 +7,8 @@ import {
 import type { Blob, OnSetDocContext } from '@junobuild/functions';
 import { id } from '@junobuild/functions/ic-cdk';
 import { decodeDocData, getAssetStore, getContentChunksStore } from '@junobuild/functions/sdk';
-import type { PostMetadata } from '../lib/types/post';
 import { STORAGE_COLLECTION_CONTENT } from '../lib/constants/publish.constants';
+import type { PostMetadata } from '../lib/types/post';
 import { keyToFullPath } from '../lib/utils/publish.utils';
 
 export const createOrUpdatePost = async (context: OnSetDocContext) => {
@@ -18,21 +18,20 @@ export const createOrUpdatePost = async (context: OnSetDocContext) => {
 		return;
 	}
 
-	console.log('HEHEHEHEHEHREEEE TODO');
 	// TODO:
 	// 1. find the asset
 	// 2. get its HTML content
 	// 3. build the blog post page
 	// 4. publish the blog post page
 
-	await getAsset(context);
+	getAsset(context);
 };
 
-const getAsset = async ({ data: { key } }: OnSetDocContext) => {
+const getAsset = ({ data: { key } }: OnSetDocContext) => {
 	const asset = getAssetStore({
 		caller: id(),
 		collection: STORAGE_COLLECTION_CONTENT,
-		full_path: keyToFullPath({key})
+		full_path: keyToFullPath({ key })
 	});
 
 	assertNonNullish(asset);
