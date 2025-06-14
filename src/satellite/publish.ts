@@ -1,10 +1,9 @@
 import {
 	arrayOfNumberToUint8Array,
 	assertNonNullish,
-	nonNullish,
 	uint8ArrayToArrayOfNumber
 } from '@dfinity/utils';
-import type { Blob, OnSetDocContext } from '@junobuild/functions';
+import type { Asset, Blob, OnSetDocContext, OptionAsset } from '@junobuild/functions';
 import { id } from '@junobuild/functions/ic-cdk';
 import { decodeDocData, getAssetStore, getContentChunksStore } from '@junobuild/functions/sdk';
 import { STORAGE_COLLECTION_CONTENT } from '../lib/constants/publish.constants';
@@ -24,29 +23,35 @@ export const createOrUpdatePost = async (context: OnSetDocContext) => {
 	// 3. build the blog post page
 	// 4. publish the blog post page
 
-	getAsset(context);
+	const asset = getAsset(context);
+	assertNonNullish(asset);
+
+	const blogContentRaw = getContent(asset);
+	const blogContentText = mapContent(blogContentRaw);
+
+	// eslint-disable-next-line no-console
+	console.log('Content:', blogContentText);
 };
 
-const getAsset = ({ data: { key } }: OnSetDocContext) => {
-	const asset = getAssetStore({
+const getAsset = ({ data: { key } }: OnSetDocContext): OptionAsset =>
+	getAssetStore({
 		caller: id(),
 		collection: STORAGE_COLLECTION_CONTENT,
 		full_path: keyToFullPath({ key })
 	});
 
-	assertNonNullish(asset);
-
+const getContent = ({ encodings }: Asset): Blob => {
 	const chunks: Blob[] = [];
-	asset.encodings.forEach((encoding, i) => {
+	encodings.forEach((encoding, i) => {
 		const chunk = getContentChunksStore({
 			encoding: encoding[1],
 			chunk_index: BigInt(i),
 			memory: 'stable'
 		});
 
-		if (nonNullish(chunk)) {
-			chunks.push(chunk);
-		}
+		assertNonNullish(chunk);
+
+		chunks.push(chunk);
 	});
 
 	const concatenateChunks = chunks.reduce<number[]>((acc, chunk) => {
@@ -54,9 +59,10 @@ const getAsset = ({ data: { key } }: OnSetDocContext) => {
 		return [...acc, ...nb];
 	}, []);
 
-	const decoder = new TextDecoder();
-	const responseBody = decoder.decode(arrayOfNumberToUint8Array(concatenateChunks));
+	return arrayOfNumberToUint8Array(concatenateChunks);
+};
 
-	// eslint-disable-next-line no-console
-	console.log('Chunk:', responseBody);
+const mapContent = (raw: Blob): string => {
+	const decoder = new TextDecoder();
+	return decoder.decode(raw);
 };
