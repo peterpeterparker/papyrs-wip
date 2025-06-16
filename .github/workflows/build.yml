@@ -6,7 +6,7 @@ on:
     types: [ released ]
 
 jobs:
-  publish:
+  build:
     runs-on: ubuntu-latest
     steps:
       - name: Check out the repo
