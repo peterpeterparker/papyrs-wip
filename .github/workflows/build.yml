@@ -23,4 +23,4 @@ jobs:
       - name: Build
         uses: junobuild/juno-action@full
         with:
-          args: dev build
+          args: functions build
