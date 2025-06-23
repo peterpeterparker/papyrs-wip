@@ -21,12 +21,12 @@ jobs:
         run: npm ci
 
       - name: Build
-        uses: junobuild/juno-action@main
+        uses: junobuild/juno-action@full
         with:
           args: functions build
 
       - name: Publish
-        uses: junobuild/juno-action@main
+        uses: junobuild/juno-action@full
         with:
           args: functions publish
         env:
