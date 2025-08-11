@@ -30,7 +30,7 @@
 </script>
 
 {#await init()}
-	<div in:fade class="spinner">
+	<div class="spinner" in:fade>
 		<Spinner />
 	</div>
 {:then _}

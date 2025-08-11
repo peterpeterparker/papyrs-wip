@@ -10,7 +10,7 @@
 </script>
 
 {#if photoUrl}
-	<img loading="lazy" src={photoUrl} {alt} />
+	<img {alt} loading="lazy" src={photoUrl} />
 {:else}
 	<IconUser />
 {/if}

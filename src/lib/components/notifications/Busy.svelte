@@ -21,7 +21,7 @@
 
 		<div class="content">
 			{#if $busy?.close === true}
-				<button on:click|stopPropagation={close} aria-label={$i18n.core.close} class="text close"
+				<button class="text close" aria-label={$i18n.core.close} on:click|stopPropagation={close}
 					><IconClose /></button
 				>
 			{/if}

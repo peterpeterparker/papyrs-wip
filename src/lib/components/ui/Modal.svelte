@@ -30,26 +30,26 @@
 {#if visible}
 	<div
 		class="modal"
-		transition:fade
-		role="dialog"
-		aria-labelledby="modalTitle"
 		aria-describedby="modalContent"
+		aria-labelledby="modalTitle"
+		role="dialog"
+		transition:fade
 	>
 		<div
-			tabindex="-1"
-			role="button"
 			class="backdrop"
+			aria-label={$i18n.core.close}
 			onclick={handleClose}
 			onkeypress={($event) => handleKeyPress({ $event, callback: close })}
-			aria-label={$i18n.core.close}
+			role="button"
+			tabindex="-1"
 		></div>
-		<div transition:scale={{ delay: 25, duration: 150, easing: quintOut }} class="wrapper">
+		<div class="wrapper" transition:scale={{ delay: 25, duration: 150, easing: quintOut }}>
 			<div class="toolbar">
 				<h3 id="modalTitle">{@render title()}</h3>
-				<button onclick={handleClose} aria-label={$i18n.core.close}><IconClose /></button>
+				<button aria-label={$i18n.core.close} onclick={handleClose}><IconClose /></button>
 			</div>
 
-			<div class="content" id="modalContent">
+			<div id="modalContent" class="content">
 				{@render children()}
 			</div>
 		</div>

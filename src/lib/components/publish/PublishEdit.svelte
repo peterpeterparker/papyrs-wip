@@ -106,10 +106,10 @@
 		{/snippet}
 
 		<input
+			maxlength={TITLE_MAX_LENGTH}
+			placeholder={$i18n.publish_edit.text.title}
 			type="text"
 			bind:value={title}
-			placeholder={$i18n.publish_edit.text.title}
-			maxlength={TITLE_MAX_LENGTH}
 		/>
 	</Value>
 
@@ -119,10 +119,10 @@
 		{/snippet}
 
 		<textarea
+			maxlength={DESCRIPTION_MAX_LENGTH}
+			placeholder={$i18n.publish_edit.text.description}
 			rows="5"
 			bind:value={description}
-			placeholder={$i18n.publish_edit.text.description}
-			maxlength={DESCRIPTION_MAX_LENGTH}
 		></textarea>
 	</Value>
 
@@ -132,10 +132,10 @@
 		{/snippet}
 
 		<input
+			maxlength={URL_SLUG_MAX_LENGTH}
+			placeholder={$i18n.publish_edit.text.slug}
 			type="text"
 			bind:value={slug}
-			placeholder={$i18n.publish_edit.text.slug}
-			maxlength={URL_SLUG_MAX_LENGTH}
 		/>
 	</Value>
 
@@ -147,19 +147,19 @@
 		{/snippet}
 
 		{#if notEmptyString(markdown)}
-			<div in:fade class="preview">
+			<div class="preview" in:fade>
 				<EditorContent
 					content={markdown}
 					editable={false}
-					papyrusDisplay={false}
 					onCreate={(content) => (html = content)}
+					papyrusDisplay={false}
 				/>
 			</div>
 		{/if}
 	</Value>
 
 	<div class="toolbar" role="toolbar">
-		<button type="button" onclick={onclose}>{$i18n.core.cancel}</button>
+		<button onclick={onclose} type="button">{$i18n.core.cancel}</button>
 		<button class="primary" disabled={!validInput}>{$i18n.publish_edit.text.publish}</button>
 	</div>
 </form>

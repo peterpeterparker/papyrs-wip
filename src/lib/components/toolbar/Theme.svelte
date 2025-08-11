@@ -10,13 +10,13 @@
 <aside>
 	{#each themes as listTheme (listTheme)}
 		<button
-			type="button"
 			class={listTheme}
+			class:selected={listTheme === $theme}
 			aria-label={`${i18nFormat($i18n.profile.switch_theme, [
 				{ placeholder: '{0}', value: listTheme }
 			])}`}
 			onclick={() => theme.select(listTheme)}
-			class:selected={listTheme === $theme}
+			type="button"
 		></button>
 	{/each}
 </aside>

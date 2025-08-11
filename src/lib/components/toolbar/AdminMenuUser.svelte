@@ -36,28 +36,28 @@
 	{$userSignedIn ? $i18n.tools.user : $i18n.nav.more}
 </Button>
 
-<Popover bind:visible anchor={button} direction="rtl">
+<Popover anchor={button} direction="rtl" bind:visible>
 	{#if $syncBusy}
 		<Dirty />
 	{:else}
 		{#if $userSignedIn}
 			<button
-				type="button"
-				role="menuitem"
+				class="menu"
 				aria-haspopup="menu"
 				onclick={async () => await goto('/admin/profile')}
-				class="menu"
+				role="menuitem"
+				type="button"
 			>
 				<IconUser />
 				<span>{$i18n.nav.profile}</span>
 			</button>
 
 			<button
-				type="button"
-				role="menuitem"
+				class="menu"
 				aria-haspopup="menu"
 				onclick={async () => await goto('/admin/settings')}
-				class="menu"
+				role="menuitem"
+				type="button"
 			>
 				<IconSettings />
 				<span>{$i18n.nav.settings}</span>
@@ -65,12 +65,12 @@
 		{/if}
 
 		{#if $userSignedIn}
-			<button type="button" role="menuitem" aria-haspopup="menu" onclick={signOut} class="menu">
+			<button class="menu" aria-haspopup="menu" onclick={signOut} role="menuitem" type="button">
 				<IconSignOut />
 				<span>{$i18n.nav.sign_out}</span>
 			</button>
 		{:else}
-			<button type="button" role="menuitem" aria-haspopup="menu" onclick={signIn} class="menu">
+			<button class="menu" aria-haspopup="menu" onclick={signIn} role="menuitem" type="button">
 				<IconSignIn />
 				<span>{$i18n.nav.sign_in}</span>
 			</button>

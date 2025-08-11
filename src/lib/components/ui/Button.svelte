@@ -20,7 +20,7 @@
 	}: Props = $props();
 </script>
 
-<button type="button" {onclick} bind:this={button} class="toolbar" {disabled} class:hidden>
+<button bind:this={button} class="toolbar" class:hidden {disabled} {onclick} type="button">
 	{@render icon()}
 	<span class="visually-hidden">{@render children()}</span>
 </button>

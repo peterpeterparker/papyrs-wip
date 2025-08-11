@@ -53,4 +53,4 @@
 	});
 </script>
 
-<Editor {content} {onUpdate} {onImgToUpload} />
+<Editor {content} {onImgToUpload} {onUpdate} />

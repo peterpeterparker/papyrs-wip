@@ -45,7 +45,7 @@
 	{$i18n.sync.text.cloud}
 </Button>
 
-<Popover bind:visible anchor={button} direction="rtl">
+<Popover anchor={button} direction="rtl" bind:visible>
 	<div class="info">
 		<h2>{$i18n.sync.text.status}</h2>
 		<p>{$i18n.sync.text.info}</p>

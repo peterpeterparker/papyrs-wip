@@ -16,7 +16,7 @@
 	const initPosition = () =>
 		({ bottom, left } = anchor ? anchor.getBoundingClientRect() : { bottom: 0, left: 0 });
 
-	$: anchor, initPosition();
+	$: (anchor, initPosition());
 
 	const close = () => (visible = false);
 </script>
@@ -25,23 +25,23 @@
 
 {#if visible}
 	<div
-		role="menu"
-		aria-orientation="vertical"
-		transition:fade
-		class="popover"
-		tabindex="-1"
 		style="--popover-top: {`${bottom}px`}; --popover-left: {`${left}px`}"
+		class="popover"
+		aria-orientation="vertical"
+		role="menu"
+		tabindex="-1"
 		on:click|stopPropagation
+		transition:fade
 	>
 		<div class="backdrop" on:click|stopPropagation={() => (visible = false)} />
 		<div
-			transition:scale={{ delay: 25, duration: 150, easing: quintOut }}
 			class="wrapper"
 			class:center
 			class:rtl={direction === 'rtl'}
+			transition:scale={{ delay: 25, duration: 150, easing: quintOut }}
 		>
 			{#if closeButton}
-				<button on:click|stopPropagation={close} aria-label={$i18n.core.close} class="close icon"
+				<button class="close icon" aria-label={$i18n.core.close} on:click|stopPropagation={close}
 					><IconClose /></button
 				>
 			{/if}

@@ -29,21 +29,21 @@
 	{$i18n.nav.menu}
 </Button>
 
-<Popover bind:visible anchor={button}>
+<Popover anchor={button} bind:visible>
 	{#if $syncBusy}
 		<Dirty />
 	{:else}
-		<button type="button" role="menuitem" aria-haspopup="menu" class="menu">
+		<button class="menu" aria-haspopup="menu" role="menuitem" type="button">
 			<IconNew />
 			<span>{$i18n.tools.new}</span>
 		</button>
 
 		<button
-			type="button"
-			role="menuitem"
-			aria-haspopup="menu"
 			class="menu"
+			aria-haspopup="menu"
 			onclick={() => onAction(() => modalStore.openPublish())}
+			role="menuitem"
+			type="button"
 		>
 			<IconPublish />
 			<span>{$i18n.publish_edit.text.publish}</span>

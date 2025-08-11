@@ -18,7 +18,7 @@
 	let disabled = $derived(isNullish($store.editor));
 </script>
 
-<Button onclick={() => $store.editor?.chain().focus().toggleBold().run()} {disabled}>
+<Button {disabled} onclick={() => $store.editor?.chain().focus().toggleBold().run()}>
 	{#snippet icon()}
 		<IconBold />
 	{/snippet}

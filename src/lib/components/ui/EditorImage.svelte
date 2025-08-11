@@ -37,7 +37,7 @@
 	};
 </script>
 
-<Button onclick={() => input?.click()} {disabled}>
+<Button {disabled} onclick={() => input?.click()}>
 	{#snippet icon()}
 		<IconUpload />
 	{/snippet}
@@ -47,10 +47,10 @@
 
 <input
 	bind:this={input}
-	type="file"
-	onchange={onChange}
-	{disabled}
 	accept="image/png, image/jpeg, image/svg+xml"
+	{disabled}
+	onchange={onChange}
+	type="file"
 />
 
 <style lang="scss">
