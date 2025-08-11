@@ -20,31 +20,31 @@
 		"i18n": "node scripts/i18n.mjs && prettier --write ./src/lib/types/i18n.d.ts"
 	},
 	"devDependencies": {
-		"@dfinity/eslint-config-oisy-wallet": "^0.1.13",
-		"@junobuild/config": "^0.1.8",
-		"@junobuild/vite-plugin": "^3.4.0",
-		"@playwright/test": "^1.52.0",
-		"@sveltejs/kit": "^2.21.2",
-		"@sveltejs/vite-plugin-svelte": "^5.1.0",
-		"@testing-library/jest-dom": "^6.6.3",
+		"@dfinity/eslint-config-oisy-wallet": "^0.2.2",
+		"@junobuild/config": "^1.1.1",
+		"@junobuild/vite-plugin": "^4.1.2",
+		"@playwright/test": "^1.54.2",
+		"@sveltejs/kit": "^2.27.3",
+		"@sveltejs/vite-plugin-svelte": "^6.1.1",
+		"@testing-library/jest-dom": "^6.6.4",
 		"@testing-library/svelte": "^5.2.8",
-		"@types/node": "^22.15.30",
+		"@types/node": "^24.2.1",
 		"jsdom": "^26.1.0",
-		"prettier": "^3.5.3",
-		"prettier-plugin-organize-imports": "^4.1.0",
+		"prettier": "^3.6.2",
+		"prettier-plugin-organize-imports": "^4.2.0",
 		"prettier-plugin-svelte": "^3.4.0",
-		"sass": "^1.89.1",
-		"svelte": "^5.33.17",
-		"svelte-check": "^4.2.1",
+		"sass": "^1.90.0",
+		"svelte": "^5.38.0",
+		"svelte-check": "^4.3.1",
 		"typescript": "^5.8.3",
-		"vite": "^6.3.5",
-		"vitest": "^3.2.2"
+		"vite": "^7.1.1",
+		"vitest": "^3.2.4"
 	},
 	"dependencies": {
-		"@dfinity/utils": "^2.13.0",
-		"@junobuild/core": "^0.1.14",
-		"@junobuild/functions": "^0.1.0",
-		"@sveltejs/adapter-static": "^3.0.8",
+		"@dfinity/utils": "^2.13.2",
+		"@junobuild/core": "^1.0.3",
+		"@junobuild/functions": "^0.2.6",
+		"@sveltejs/adapter-static": "^3.0.9",
 		"@tiptap/core": "^2.14.0",
 		"@tiptap/extension-code-block-lowlight": "^2.14.0",
 		"@tiptap/extension-highlight": "^2.14.0",
@@ -61,6 +61,6 @@
 		"dompurify": "^3.2.6",
 		"idb-keyval": "^6.2.2",
 		"tiptap-markdown": "^0.8.10",
-		"zod": "^3.25.56"
+		"zod": "^3.25.71"
 	}
 }
