@@ -39,7 +39,14 @@ export default defineConfig({
 		},
 		source: 'build',
 		predeploy: ['npm run build'],
-		collections
+		collections,
+		// TODO: The configuration failed with 1 error 😢.
+		// 0: Wrong number of return values
+		// authentication: {
+		// 	rules: {
+		// 		allowedCallers: ["gzzzh-k6mjj-yzbo5-voxpo-hpys7-5ucs3-4eqf2-cgmtu-dbqiu-u3vwe-lae"]
+		// 	}
+		// }
 	},
 	emulator: {
 		runner: {
