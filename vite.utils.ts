@@ -1,6 +1,5 @@
 import { readFileSync } from 'node:fs';
 import { fileURLToPath } from 'node:url';
-import type { UserConfig } from 'vite';
 
 export const defineViteReplacements = (): {
 	VITE_APP_VERSION: string;
@@ -14,12 +13,3 @@ export const defineViteReplacements = (): {
 	};
 };
 
-export const CSS_CONFIG_OPTIONS: Pick<UserConfig, 'css'> = {
-	css: {
-		preprocessorOptions: {
-			scss: {
-				api: 'modern-compiler'
-			}
-		}
-	}
-};
